@@ -10,7 +10,7 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist dominus77/yii2-tinymce-widget "*"
+php composer.phar require --prefer-dist dominus77/yii2-tinymce-widget "dev-master"
 ```
 
 or add
