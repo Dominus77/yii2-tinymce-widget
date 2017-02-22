@@ -16,7 +16,7 @@ php composer.phar require --prefer-dist dominus77/yii2-tinymce-widget "dev-maste
 or add
 
 ```
-"dominus77/yii2-tinymce-widget": "*"
+"dominus77/yii2-tinymce-widget": "dev-master"
 ```
 
 to the require section of your `composer.json` file.
