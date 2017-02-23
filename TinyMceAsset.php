@@ -18,13 +18,10 @@ class TinyMceAsset extends AssetBundle
 
     public $js = [];
 
-    public $depends = [];
-
     public function init()
     {
         $this->sourcePath = self::$publishPath;
         $min = YII_ENV_DEV ? '' : '.min';
         $this->js[] = 'tinymce' . $min . '.js';
-        $this->depends[] = 'dominus77\tinymce\TinyMceLangAsset';
     }
 }
