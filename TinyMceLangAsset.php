@@ -14,6 +14,6 @@ class TinyMceLangAsset extends AssetBundle
     public function init()
     {
         $this->sourcePath = self::$publishPath;
-        $this->depends[] = 'dominus77\tinymce\TinyMceAsset';
+        //$this->depends[] = 'dominus77\tinymce\TinyMceAsset';
     }
 }
