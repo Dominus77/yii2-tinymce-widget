@@ -30,7 +30,9 @@ Once the extension is installed, simply use it in your code by  :
 
 ```php
 <?php
+...
 use dominus77\tinymce\TinyMce;
+...
 ?>
 
 <?= $form->field($model, 'text')->widget(TinyMce::className(), [
