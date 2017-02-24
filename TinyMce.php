@@ -5,16 +5,13 @@ namespace dominus77\tinymce;
 use yii\helpers\Html;
 use yii\helpers\Json;
 use yii\widgets\InputWidget;
+use dominus77\tinymce\components\xCopy;
 
 /**
  * TinyMCE renders a tinyMCE js plugin for WYSIWYG editing.
  */
 class TinyMce extends InputWidget
 {
-    /**
-     * @var string the language to use. Defaults to null (en).
-     */
-    public $language;
     /**
      * @var array the options for the TinyMCE JS plugin.
      * Please refer to the TinyMCE JS plugin Web page for possible options.
@@ -46,15 +43,14 @@ class TinyMce extends InputWidget
     {
         $js = [];
         $view = $this->getView();
-        TinyMceAsset::register($view);
+        $languagePack = \Yii::getAlias('@dominus77/tinymce/assets');
+        if ($tinyAssetBundle = TinyMceAsset::register($view)) {
+            $xCopy = new xCopy();
+            $assetPath = $tinyAssetBundle->basePath;
+            $xCopy->copyFolder($languagePack, $assetPath, true, true);
+        }
         $id = $this->options['id'];
         $this->clientOptions['selector'] = "#$id";
-        if ($this->language !== null) {
-            $langFile = "langs/{$this->language}.js";
-            $langAssetBundle = TinyMceLangAsset::register($view);
-            $langAssetBundle->js[] = $langFile;
-            $this->clientOptions['language_url'] = $langAssetBundle->baseUrl . "/{$langFile}";
-        }
         $options = Json::encode($this->clientOptions);
         $js[] = "tinymce.init($options);";
         if ($this->triggerSaveOnBeforeValidateForm) {
