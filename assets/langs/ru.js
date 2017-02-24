@@ -224,5 +224,6 @@ tinymce.addI18n('ru', {
     "Date/time": "Дата/время",
     "Media": "Медиа",
     "Image": "Изображение",
-    "Table of Contents": "Содержание"
+    "Table of Contents": "Содержание",
+    "Insert file": "Вставить файл"
 });
