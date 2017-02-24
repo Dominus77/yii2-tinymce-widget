@@ -11,13 +11,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist dominus77/yii2-tinymce-widget "dev-master"
+php composer.phar require --prefer-dist dominus77/yii2-tinymce-widget "*"
 ```
 
 or add
 
 ```
-"dominus77/yii2-tinymce-widget": "dev-master"
+"dominus77/yii2-tinymce-widget": "*"
 ```
 
 to the require section of your `composer.json` file.
