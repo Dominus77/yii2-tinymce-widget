@@ -3,6 +3,7 @@
 namespace dominus77\tinymce;
 
 use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
 use yii\widgets\InputWidget;
 use dominus77\tinymce\components\xCopy;
@@ -12,6 +13,11 @@ use dominus77\tinymce\components\xCopy;
  */
 class TinyMce extends InputWidget
 {
+    /**
+     * Set Language
+     * @var string
+     */
+    public $language = 'en';
     /**
      * @var array the options for the TinyMCE JS plugin.
      * Please refer to the TinyMCE JS plugin Web page for possible options.
@@ -51,6 +57,7 @@ class TinyMce extends InputWidget
         }
         $id = $this->options['id'];
         $this->clientOptions['selector'] = "#$id";
+        $this->clientOptions['language'] = isset($this->clientOptions['language']) ? $this->clientOptions['language'] : $this->language;
         $options = Json::encode($this->clientOptions);
         $js[] = "tinymce.init($options);";
         if ($this->triggerSaveOnBeforeValidateForm) {

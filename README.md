@@ -35,12 +35,12 @@ use dominus77\tinymce\TinyMce;
 ...
 ?>
 
-<?= $form->field($model, 'text')->widget(TinyMce::className(), [
+<?= $form->field($model, 'text')->widget(TinyMce::className(), [    
     'options' => [
         'rows' => 6
-    ],    
-    'clientOptions' => [
-        'language' => 'ru',
+    ], 
+    'language' => 'ru',
+    'clientOptions' => [        
         'theme' => 'modern',
         'plugins' => [
             "advlist autolink lists link image charmap print preview hr anchor pagebreak",
