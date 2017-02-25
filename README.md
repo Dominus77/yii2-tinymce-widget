@@ -3,6 +3,10 @@ README
 
 Renders a [TinyMCE WYSIWYG text editor](https://www.tinymce.com) widget.
 
+Supplements
+------------
+A plugin [TinyMCE-FontAwesome-Plugin](https://github.com/josh18/TinyMCE-FontAwesome-Plugin/tree/master) that lets you insert FontAwesome icons via TinyMCE.
+
 Installation
 ------------
 
@@ -46,10 +50,12 @@ use dominus77\tinymce\TinyMce;
             "advlist autolink lists link image charmap print preview hr anchor pagebreak",
             "searchreplace wordcount visualblocks visualchars code fullscreen",
             "insertdatetime media nonbreaking save table contextmenu directionality",
-            "emoticons template paste textcolor colorpicker textpattern imagetools codesample toc",
+            "emoticons template paste textcolor colorpicker textpattern imagetools codesample toc fontawesome noneditable",
         ],
+        'noneditable_noneditable_class' => 'fa',
+        'extended_valid_elements' => 'span[class|style]',
         'toolbar1' => "undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
-        'toolbar2' => "print preview media | forecolor backcolor emoticons | codesample",
+        'toolbar2' => "print preview media | forecolor backcolor emoticons fontawesome | codesample",
         'image_advtab' => true,
         'templates' => [
             [
@@ -64,6 +70,7 @@ use dominus77\tinymce\TinyMce;
         'content_css' => [
             '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
             '//www.tinymce.com/css/codepen.min.css',
+            'https://netdna.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css'
         ]
     ]
 ]);?>

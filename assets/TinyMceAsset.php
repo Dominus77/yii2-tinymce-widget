@@ -1,6 +1,6 @@
 <?php
 
-namespace dominus77\tinymce;
+namespace dominus77\tinymce\assets;
 
 use yii\web\AssetBundle;
 

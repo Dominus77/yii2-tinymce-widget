@@ -2,10 +2,11 @@
 
 namespace dominus77\tinymce;
 
+use Yii;
 use yii\helpers\Html;
-use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
 use yii\widgets\InputWidget;
+use dominus77\tinymce\assets\TinyMceAsset;
 use dominus77\tinymce\components\xCopy;
 
 /**
@@ -49,11 +50,15 @@ class TinyMce extends InputWidget
     {
         $js = [];
         $view = $this->getView();
-        $languagePack = \Yii::getAlias('@dominus77/tinymce/assets');
         if ($tinyAssetBundle = TinyMceAsset::register($view)) {
             $xCopy = new xCopy();
             $assetPath = $tinyAssetBundle->basePath;
-            $xCopy->copyFolder($languagePack, $assetPath, true, true);
+            // Language pack
+            $languagesPack = \Yii::getAlias('@dominus77/tinymce/assets/languages_pack');
+            $xCopy->copyFolder($languagesPack, $assetPath, true, true);
+            // Plugins
+            $pluginsPack = \Yii::getAlias('@dominus77/tinymce/assets/plugins_pack');
+            $xCopy->copyFolder($pluginsPack, $assetPath, true, true);
         }
         $id = $this->options['id'];
         $this->clientOptions['selector'] = "#$id";
