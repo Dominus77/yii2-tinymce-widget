@@ -70,7 +70,7 @@ use dominus77\tinymce\TinyMce;
         'content_css' => [
             '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
             '//www.tinymce.com/css/codepen.min.css',
-            'https://netdna.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css'
+            '//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
         ]
     ]
 ]);?>
