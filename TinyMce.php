@@ -29,7 +29,6 @@ class TinyMce extends InputWidget
      * @var bool whether to set the on change event for the editor. This is required to be able to validate data.
      */
     public $triggerSaveOnBeforeValidateForm = true;
-
     /**
      * @inheritdoc
      */
@@ -42,7 +41,6 @@ class TinyMce extends InputWidget
         }
         $this->registerClientScript();
     }
-
     /**
      * Registers tinyMCE js plugin
      */
