@@ -41,6 +41,7 @@ class TinyMce extends InputWidget
         }
         $this->registerClientScript();
     }
+
     /**
      * Registers tinyMCE js plugin
      */
