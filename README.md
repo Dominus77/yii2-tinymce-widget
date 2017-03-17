@@ -136,7 +136,7 @@ Then select file manager provider in the widget:
 $form->field($model, 'text')->widget(\dominus77\tinymce\TinyMce::className(), [    
     'clientOptions' => [...],
     'fileManager' => [
-        'class' => \dominus77\tinymce\fm\MihaildevElFinder::className(),
+        'class' => \dominus77\tinymce\components\MihaildevElFinder::className(),
     ],    
     ...
 ])
@@ -231,7 +231,7 @@ in module view:
 $form->field($model, 'text')->widget(\dominus77\tinymce\TinyMce::className(), [    
     'clientOptions' => [...],
     'fileManager' => [
-        'class' => \dominus77\tinymce\fm\MihaildevElFinder::className(),
+        'class' => \dominus77\tinymce\components\MihaildevElFinder::className(),
         'controller' => 'elfinder',        
         'title' => 'My File Manager',
         'width' => 900,

@@ -1,14 +1,11 @@
 <?php
-namespace dominus77\tinymce\fm;
+namespace dominus77\tinymce\components;
 
 use Yii;
-use yii\base\Exception;
 use yii\helpers\Json;
-use yii\helpers\Url;
 use yii\web\JsExpression;
-use yii\web\View;
 
-class MihaildevElFinder extends \dominus77\tinymce\fm\FileManager
+class MihaildevElFinder extends \dominus77\tinymce\components\FileManager
 {
     public $tinyMceSettings = [];
     /** @var  \yii\web\View */
@@ -78,7 +75,8 @@ class MihaildevElFinder extends \dominus77\tinymce\fm\FileManager
                     resizable: '{$this->resizable}'
                 }, {
                     setUrl: function (url) {
-                        win.document.getElementById(field_name).value = url;
+                        var fileUrl = tinymce.activeEditor.convertURL(url, null, true);
+                        win.document.getElementById(field_name).value = fileUrl;
                     }
                 });
                 return false;

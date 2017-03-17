@@ -73,7 +73,7 @@ class TinyMce extends InputWidget
         $this->clientOptions['language'] = isset($this->clientOptions['language']) ? $this->clientOptions['language'] : $this->language;
 
         if ($this->fileManager !== false) {
-            /** @var $fm \dominus77\tinymce\fm\FileManager */
+            /** @var $fm \dominus77\tinymce\components\FileManager */
             $fm = Yii::createObject(array_merge($this->fileManager, [
                 'tinyMceSettings' => $this->clientOptions,
                 'parentView' => $view]));

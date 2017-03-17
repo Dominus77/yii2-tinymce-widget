@@ -1,13 +1,14 @@
 <?php
-namespace dominus77\tinymce\fm;
+namespace dominus77\tinymce\components;
 
 use yii\base\Object;
-use yii\web\JsExpression;
-use yii\web\View;
 
 abstract class FileManager extends Object
 {
-    public function init(){}
+    public function init()
+    {
+        parent::init();
+    }
 
     abstract public function getFileBrowserCallback();
 
