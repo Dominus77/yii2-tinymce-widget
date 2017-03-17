@@ -232,8 +232,7 @@ $form->field($model, 'text')->widget(\dominus77\tinymce\TinyMce::className(), [
     'clientOptions' => [...],
     'fileManager' => [
         'class' => \dominus77\tinymce\fm\MihaildevElFinder::className(),
-        'controller' => \yii\helpers\Url::to(['elfinder']),
-        'language' => 'ru',
+        'controller' => 'elfinder',        
         'title' => 'My File Manager',
         'width' => 900,
         'height' => 600,
