@@ -33,7 +33,7 @@ Usage
 Once the extension is installed, simply use it in your code by  :
 
 ```php
-<?= $form->field($model, 'text')->widget(\dominus77\tinymce\TinyMceTinyMce::className(), [    
+<?= $form->field($model, 'text')->widget(\dominus77\tinymce\TinyMce::className(), [    
     'options' => [
         'rows' => 6
     ], 
