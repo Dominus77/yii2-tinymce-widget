@@ -1,7 +1,7 @@
 README
 ======
 
-Renders a [TinyMCE WYSIWYG text editor](https://www.tinymce.com) widget.
+Renders a [TinyMCE WYSIWYG text editor](https://www.tinymce.com) widget with the support [ElFinder Extension for Yii 2](https://github.com/MihailDev/yii2-elfinder)
 
 Supplements
 ------------
@@ -33,13 +33,7 @@ Usage
 Once the extension is installed, simply use it in your code by  :
 
 ```php
-<?php
-...
-use dominus77\tinymce\TinyMce;
-...
-?>
-
-<?= $form->field($model, 'text')->widget(TinyMce::className(), [    
+<?= $form->field($model, 'text')->widget(\dominus77\tinymce\TinyMceTinyMce::className(), [    
     'options' => [
         'rows' => 6
     ], 
@@ -77,9 +71,181 @@ use dominus77\tinymce\TinyMce;
 
 ```
 
+ElFinder file manager
+-----
+Install [mihaildev/yii2-elfinder](https://github.com/MihailDev/yii2-elfinder) extension.
+
+Either run
+
+```
+php composer.phar require --prefer-dist mihaildev/yii2-elfinder "*"
+```
+
+or add
+
+```
+"mihaildev/yii2-elfinder": "*"
+```
+
+Configure elFinder (more info [here](https://github.com/MihailDev/yii2-elfinder))
+
+```php
+'controllerMap' => [
+    'elfinder' => [
+        'class' => 'mihaildev\elfinder\Controller',
+        'access' => ['@'], //Global file manager access @ - for authorized , ? - for guests , to open to all ['@', '?']
+        'disabledCommands' => ['netmount'], //disabling unnecessary commands https://github.com/Studio-42/elFinder/wiki/Client-configuration-options#commands
+        'roots' => [
+            [
+                'baseUrl'=>'@web',
+                'basePath'=>'@webroot',
+                'path' => 'files/global',
+                'name' => 'Global'
+            ],
+            [
+                'class' => 'mihaildev\elfinder\volume\UserPath',
+                'path'  => 'files/user_{id}',
+                'name'  => 'My Documents'
+            ],
+            [
+                'path' => 'files/some',
+                'name' => ['category' => 'my','message' => 'Some Name'] //перевод Yii::t($category, $message)
+            ],
+            [
+                'path'   => 'files/some',
+                'name'   => ['category' => 'my','message' => 'Some Name'], // Yii::t($category, $message)
+                'access' => ['read' => '*', 'write' => 'UserFilesAccess'] // * - for all, otherwise the access check in this example can be seen by all users with rights only UserFilesAccess
+            ]
+        ],
+        'watermark' => [
+             'source'         => __DIR__.'/logo.png', // Path to Water mark image
+             'marginRight'    => 5,          // Margin right pixel
+             'marginBottom'   => 5,          // Margin bottom pixel
+             'quality'        => 95,         // JPEG image save quality
+             'transparency'   => 70,         // Water mark image transparency ( other than PNG )
+             'targetType'     => IMG_GIF|IMG_JPG|IMG_PNG|IMG_WBMP, // Target image formats ( bit-field )
+             'targetMinPixel' => 200         // Target image minimum pixel size
+        ]
+    ]
+],
+```
+
+Then select file manager provider in the widget:
+
+```php
+$form->field($model, 'text')->widget(\dominus77\tinymce\TinyMce::className(), [    
+    'clientOptions' => [...],
+    'fileManager' => [
+        'class' => \dominus77\tinymce\fm\MihaildevElFinder::className(),
+    ],    
+    ...
+])
+```
+
+You can customize some window (width and height) and manager (language, filter, path and multiple) properties. If you want to use different access, watermark and roots setting just prepare controllers:
+
+```php
+'controllerMap' => [
+    'elf1' => [
+        'class' => 'mihaildev\elfinder\Controller',
+        'access' => ['@'],
+        'roots' => [
+            [
+                'baseUrl'=>'@web',
+                'basePath'=>'@webroot',
+                'path' => 'files/global',
+                'name' => 'Global'
+            ],
+        ],
+        'watermark' => [
+            'source'         => __DIR__.'/logo.png', // Path to Water mark image
+            'marginRight'    => 5,          // Margin right pixel
+            'marginBottom'   => 5,          // Margin bottom pixel
+            'quality'        => 95,         // JPEG image save quality
+            'transparency'   => 70,         // Water mark image transparency ( other than PNG )
+            'targetType'     => IMG_GIF|IMG_JPG|IMG_PNG|IMG_WBMP, // Target image formats ( bit-field )
+            'targetMinPixel' => 200         // Target image minimum pixel size            
+        ],
+    ],
+    'elf2' => [
+        'class' => 'mihaildev\elfinder\Controller',
+        'access' => ['*'],
+        'roots' => [
+            [                
+                'path' => 'files/some1',
+                'name' => ['category' => 'my','message' => 'Some Name']
+            ],
+            [                
+                'path' => 'files/some2',
+                'name' => ['category' => 'my','message' => 'Some Name'],
+                'access' => ['read' => '*', 'write' => 'UserFilesAccess']
+            ],
+        ],
+    ],
+]
+```
+
+Connection in the module:
+
+```php
+namespace modules\example;
+
+class Module extends \yii\base\Module
+{
+    ...
+    public function init()
+    {
+        parent::init();
+        $this->controllerMap = [
+            'elfinder' => [
+                'class' => 'mihaildev\elfinder\Controller',
+                'access' => ['@'],
+                'disabledCommands' => ['netmount'],
+                'roots' => [
+                    [
+                        'baseUrl'=>'@web',
+                        'basePath'=>'@webroot',
+                        'path' => 'files/global',
+                        'name' => 'Global'
+                    ],
+                ],
+                'watermark' => [
+                    'source'         => __DIR__.'/logo.png', // Path to Water mark image
+                    'marginRight'    => 5,          // Margin right pixel
+                    'marginBottom'   => 5,          // Margin bottom pixel
+                    'quality'        => 95,         // JPEG image save quality
+                    'transparency'   => 70,         // Water mark image transparency ( other than PNG )
+                    'targetType'     => IMG_GIF|IMG_JPG|IMG_PNG|IMG_WBMP, // Target image formats ( bit-field )
+                    'targetMinPixel' => 200         // Target image minimum pixel size            
+                ],
+            ]
+        ];
+    }
+    ...
+}
+```
+
+in module view:
+
+```php
+$form->field($model, 'text')->widget(\dominus77\tinymce\TinyMce::className(), [    
+    'clientOptions' => [...],
+    'fileManager' => [
+        'class' => \dominus77\tinymce\fm\MihaildevElFinder::className(),
+        'controller' => \yii\helpers\Url::to(['elfinder']),
+        'language' => 'ru',
+        'title' => 'My File Manager',
+        'width' => 900,
+        'height' => 600,
+        'resizable' => 'yes',
+    ],    
+    ...
+]);
+```
+
 Further Information
 -----
-Please, check the [TinyMCE plugin site](https://www.tinymce.com/docs/configure/) documentation for further information about its configuration options.
+Please, check the [TinyMCE plugin site](https://www.tinymce.com/docs/configure/) documentation for further information about its configuration options, and [ElFinder Extension for Yii 2](https://github.com/MihailDev/yii2-elfinder).
 
 License
 -----

@@ -30,6 +30,15 @@ class TinyMce extends InputWidget
      */
     public $triggerSaveOnBeforeValidateForm = true;
     /**
+     * @var bool|array FileManager configuration
+     * For example:
+     * 'fileManager' => array(
+     *       'class' => 'FileManager',
+     * )
+     */
+    public $fileManager = false;
+
+    /**
      * @inheritdoc
      */
     public function run()
@@ -62,6 +71,17 @@ class TinyMce extends InputWidget
         $id = $this->options['id'];
         $this->clientOptions['selector'] = "#$id";
         $this->clientOptions['language'] = isset($this->clientOptions['language']) ? $this->clientOptions['language'] : $this->language;
+
+        if ($this->fileManager !== false) {
+            /** @var $fm \dominus77\tinymce\fm\FileManager */
+            $fm = Yii::createObject(array_merge($this->fileManager, [
+                'tinyMceSettings' => $this->clientOptions,
+                'parentView' => $view]));
+            $fm->init();
+            $fm->registerAsset();
+            $this->clientOptions['file_browser_callback'] = $fm->getFileBrowserCallback();
+        }
+
         $options = Json::encode($this->clientOptions);
         $js[] = "tinymce.init($options);";
         if ($this->triggerSaveOnBeforeValidateForm) {
