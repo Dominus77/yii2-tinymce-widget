@@ -12,6 +12,7 @@
     ],
     "require": {
         "yiisoft/yii2": "~2.0.0",
+        "fortawesome/font-awesome": "^4.6",
         "tinymce/tinymce": ">= 4"
     },
     "autoload": {

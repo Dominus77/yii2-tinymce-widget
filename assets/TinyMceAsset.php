@@ -22,4 +22,8 @@ class TinyMceAsset extends AssetBundle
         $min = YII_ENV_DEV ? '' : '.min';        
         $this->js[] = 'tinymce' . $min . '.js';            
     }
+
+    public $depends = [
+        'dominus77\tinymce\assets\FontAwesomeAsset'
+    ];
 }
