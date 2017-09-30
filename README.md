@@ -41,7 +41,7 @@ Once the extension is installed, simply use it in your code by  :
     'clientOptions' => [        
         'theme' => 'modern',
         'plugins' => [
-            "advlist autolink lists link image charmap print preview hr anchor pagebreak sh4tinymce",
+            "advlist autolink lists link image charmap print preview hr anchor pagebreak",
             "searchreplace wordcount visualblocks visualchars code fullscreen",
             "insertdatetime media nonbreaking save table contextmenu directionality",
             "emoticons template paste textcolor colorpicker textpattern imagetools codesample toc fontawesome noneditable",
@@ -49,7 +49,7 @@ Once the extension is installed, simply use it in your code by  :
         'noneditable_noneditable_class' => 'fa',
         'extended_valid_elements' => 'span[class|style]',
         'toolbar1' => "undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
-        'toolbar2' => "print preview media | forecolor backcolor emoticons fontawesome | codesample | sh4tinymce",
+        'toolbar2' => "print preview media | forecolor backcolor emoticons fontawesome | codesample",
         'image_advtab' => true,
         'templates' => [
             [
