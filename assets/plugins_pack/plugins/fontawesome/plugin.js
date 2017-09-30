@@ -4,7 +4,7 @@
 // Editing by Dominus77
 // <ivanovosity@gmail.com>
 // v2.0.6
-tinymce.PluginManager.requireLangPack('fontawesome');
+tinymce.PluginManager.requireLangPack('fontawesome', 'de, en, es, fr, ja, nl, ru, zh_TW');
 tinymce.PluginManager.add('fontawesome', function (editor, url) {
 
     var translate = tinymce.util.I18n.translate;

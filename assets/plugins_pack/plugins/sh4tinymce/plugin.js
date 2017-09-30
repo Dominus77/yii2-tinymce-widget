@@ -9,7 +9,7 @@
 * http://lab.nomadonweb/sh4tinymce
 * 
 */
-tinymce.PluginManager.requireLangPack('sh4tinymce');
+tinymce.PluginManager.requireLangPack('sh4tinymce','en,fr_FR,ru,zh_TW');
 tinymce.PluginManager.add('sh4tinymce', function(editor,url) {
 	function showDialog() {
 		/* Var declaration */
