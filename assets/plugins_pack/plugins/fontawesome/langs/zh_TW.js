@@ -16,5 +16,6 @@ tinymce.addI18n('zh_TW', {
     'Chart': '圖表',
     'Hand': '手',
     'Search': '搜尋',
-    'No icons matched your search': '沒有符合您搜索的圖標'
+    'No icons matched your search': '沒有符合您搜索的圖標',
+    'Accessibility': '???'
 });
