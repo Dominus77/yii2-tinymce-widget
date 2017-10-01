@@ -10,6 +10,8 @@ abstract class FileManager extends Object
         parent::init();
     }
 
+    abstract public function getFilePickerCallback();
+
     abstract public function getFileBrowserCallback();
 
     abstract public function registerAsset();

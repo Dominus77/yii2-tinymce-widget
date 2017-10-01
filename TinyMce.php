@@ -79,7 +79,8 @@ class TinyMce extends InputWidget
                 'parentView' => $view]));
             $fm->init();
             $fm->registerAsset();
-            $this->clientOptions['file_browser_callback'] = $fm->getFileBrowserCallback();
+            $this->clientOptions['file_picker_callback'] = $fm->getFilePickerCallback();
+            //$this->clientOptions['file_browser_callback'] = $fm->getFileBrowserCallback();
         }
 
         $options = Json::encode($this->clientOptions);

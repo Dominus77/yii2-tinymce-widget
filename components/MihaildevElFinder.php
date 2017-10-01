@@ -36,6 +36,68 @@ class MihaildevElFinder extends \dominus77\tinymce\components\FileManager
         }
     }
 
+    public function getFilePickerCallback()
+    {
+        if (!$this->language) {
+            $this->language = $this->tinyMceSettings['language'];
+        }
+
+        $managerOptions = [
+            'callback' => $this->getId(),
+        ];
+
+        if (!empty($this->filter)) {
+            $managerOptions['filter'] = $this->filter;
+        }
+
+        if (!empty($this->language)) {
+            $managerOptions['lang'] = $this->language;
+        }
+
+        if (!empty($this->multiple)) {
+            $managerOptions['multiple'] = $this->multiple;
+        }
+
+        if (!empty($this->path)) {
+            $managerOptions['path'] = $this->path;
+        }
+
+        $managerOptions[0] = '/' . $this->controller . "/manager";
+        $this->managerUrl = Yii::$app->urlManager->createUrl($managerOptions);
+        $this->parentView->registerJs("
+            mihaildev.elFinder.register(" . Json::encode($this->getId()) . ", function (file, objVals) {
+                top.tinymce.activeEditor.windowManager.getParams().oninsert(file, objVals);
+                top.tinymce.activeEditor.windowManager.close();
+                return false;
+            });
+        ");
+        $script = new JsExpression("
+            function(callback, value, meta) {
+                tinymce.activeEditor.windowManager.open({
+                    file: '{$this->managerUrl}',
+                    title: '{$this->title}',
+                    width: '{$this->width}',
+                    height: '{$this->height}',
+                    resizable: '{$this->resizable}'
+                }, {
+                    oninsert: function(file, objVals){
+                        var url, reg;
+
+                        // URL normalization
+                        url = file.url;
+                        reg = /\\/[^/]+?\\/\\.\\.\\//;
+                        while(url.match(reg)) {
+                            url = url.replace(reg, '/');
+                        }
+                        callback(url, objVals);
+                    }
+                });
+                return false;
+            }
+        ");
+        return $script;
+    }
+
     public function getFileBrowserCallback()
     {
         if (!$this->language) {
