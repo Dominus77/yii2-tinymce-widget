@@ -79,8 +79,25 @@ class TinyMce extends InputWidget
                 'parentView' => $view]));
             $fm->init();
             $fm->registerAsset();
-            $this->clientOptions['file_picker_callback'] = $fm->getFilePickerCallback();
-            //$this->clientOptions['file_browser_callback'] = $fm->getFileBrowserCallback();
+
+            /**
+             * This option allows you to automatically fill in the fields of height and width of the image
+             * @see https://www.tinymce.com/docs/configure/file-image-upload/#file_picker_callback
+             *
+             * If you specify the key in the clientOptics file_picker_types,
+             * file_picker_callback will be used differently file_browser_callback
+             *
+             * 'clientOptions' => [
+             *     //...
+             *     'file_picker_types' => 'image',
+             *     //...
+             * ]
+             */
+            if (array_key_exists('file_picker_types', $this->clientOptions)) {
+                $this->clientOptions['file_picker_callback'] = $fm->getFilePickerCallback();
+            } else {
+                $this->clientOptions['file_browser_callback'] = $fm->getFileBrowserCallback();
+            }
         }
 
         $options = Json::encode($this->clientOptions);

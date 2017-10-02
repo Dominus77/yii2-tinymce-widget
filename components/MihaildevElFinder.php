@@ -64,13 +64,16 @@ class MihaildevElFinder extends \dominus77\tinymce\components\FileManager
 
         $managerOptions[0] = '/' . $this->controller . "/manager";
         $this->managerUrl = Yii::$app->urlManager->createUrl($managerOptions);
-        $this->parentView->registerJs("
+
+        $script = new JsExpression("
             mihaildev.elFinder.register(" . Json::encode($this->getId()) . ", function (file, objVals) {
                 top.tinymce.activeEditor.windowManager.getParams().oninsert(file, objVals);
                 top.tinymce.activeEditor.windowManager.close();
                 return false;
             });
         ");
+        $this->parentView->registerJs($script);
+
         $script = new JsExpression("
             function(callback, value, meta) {
                 tinymce.activeEditor.windowManager.open({
@@ -82,8 +85,6 @@ class MihaildevElFinder extends \dominus77\tinymce\components\FileManager
                 }, {
                     oninsert: function(file, objVals){
                         var url, reg;
-
-                        // URL normalization
                         url = file.url;
                         reg = /\\/[^/]+?\\/\\.\\.\\//;
                         while(url.match(reg)) {
@@ -127,12 +128,13 @@ class MihaildevElFinder extends \dominus77\tinymce\components\FileManager
         $managerOptions[0] = '/' . $this->controller . "/manager";
         $this->managerUrl = Yii::$app->urlManager->createUrl($managerOptions);
 
-        $this->parentView->registerJs("
+        $script = new JsExpression("
             mihaildev.elFinder.register(" . Json::encode($this->getId()) . ", function (file, id) {
                 top.tinymce.activeEditor.windowManager.getParams().setUrl(file.url);
                 top.tinymce.activeEditor.windowManager.close();
             });
         ");
+        $this->parentView->registerJs($script);
 
         $script = new JsExpression("
             function(field_name, url, type, win) {
