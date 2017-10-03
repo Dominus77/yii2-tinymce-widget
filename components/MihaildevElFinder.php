@@ -5,13 +5,18 @@ use Yii;
 use yii\helpers\Json;
 use yii\web\JsExpression;
 
+/**
+ * Class MihaildevElFinder
+ * @package dominus77\tinymce\components
+ */
 class MihaildevElFinder extends \dominus77\tinymce\components\FileManager
 {
     public $tinyMceSettings = [];
     /** @var  \yii\web\View */
     public $parentView;
     public $assets = [
-        '\mihaildev\elfinder\AssetsCallBack'
+        '\mihaildev\elfinder\AssetsCallBack',
+        '\mihaildev\elfinder\Assets'
     ];
     public $controller = 'elfinder';
     public $language;
@@ -36,7 +41,11 @@ class MihaildevElFinder extends \dominus77\tinymce\components\FileManager
         }
     }
 
-    public function getFilePickerCallback()
+    /**
+     * Manager Options
+     * @return array
+     */
+    private function getManagerOptions()
     {
         if (!$this->language) {
             $this->language = $this->tinyMceSettings['language'];
@@ -65,10 +74,20 @@ class MihaildevElFinder extends \dominus77\tinymce\components\FileManager
         $managerOptions[0] = '/' . $this->controller . "/manager";
         $this->managerUrl = Yii::$app->urlManager->createUrl($managerOptions);
 
+        return $managerOptions;
+    }
+
+    /**
+     * @return JsExpression
+     */
+    public function getFilePickerCallback()
+    {
+        $this->getManagerOptions();
+
         $script = new JsExpression("
-            mihaildev.elFinder.register(" . Json::encode($this->getId()) . ", function (file, objVals) {
-                top.tinymce.activeEditor.windowManager.getParams().oninsert(file, objVals);
-                top.tinymce.activeEditor.windowManager.close();
+            mihaildev.elFinder.register(" . Json::encode($this->getId()) . ", function (file, fm) {
+                parent.tinymce.activeEditor.windowManager.getParams().oninsert(file, fm);
+                parent.tinymce.activeEditor.windowManager.close();
                 return false;
             });
         ");
@@ -83,14 +102,33 @@ class MihaildevElFinder extends \dominus77\tinymce\components\FileManager
                     height: '{$this->height}',
                     resizable: '{$this->resizable}'
                 }, {
-                    oninsert: function(file, objVals){
-                        var url, reg;
+                    oninsert: function(file, elf) {
+                        var url, reg, info;
+
+                        // URL normalization
                         url = file.url;
                         reg = /\\/[^/]+?\\/\\.\\.\\//;
                         while(url.match(reg)) {
                             url = url.replace(reg, '/');
                         }
-                        callback(url, objVals);
+
+                        // Make file info
+                        info = file.name + ' (' + elFinder.prototype.formatSize(file.size) + ')';
+
+                        // Provide file and text for the link dialog
+                        if (meta.filetype == 'file') {
+                            callback(url, {text: info, title: info});
+                        }
+
+                        // Provide image and alt text for the image dialog
+                        if (meta.filetype == 'image') {
+                            callback(url, {alt: info});
+                        }
+
+                        // Provide alternative source and posted for the media dialog
+                        if (meta.filetype == 'media') {
+                            callback(url);
+                        }
                     }
                 });
                 return false;
@@ -99,55 +137,62 @@ class MihaildevElFinder extends \dominus77\tinymce\components\FileManager
         return $script;
     }
 
-    public function getFileBrowserCallback()
+    /**
+     * Fix Bug TinyMCE 4.6.7
+     * @see https://github.com/tinymce/tinymce/issues/3939
+     * @return JsExpression
+     */
+    public function getFilePickerFixCallback()
     {
-        if (!$this->language) {
-            $this->language = $this->tinyMceSettings['language'];
-        }
-
-        $managerOptions = [
-            'callback' => $this->getId(),
-        ];
-
-        if (!empty($this->filter)) {
-            $managerOptions['filter'] = $this->filter;
-        }
-
-        if (!empty($this->language)) {
-            $managerOptions['lang'] = $this->language;
-        }
-
-        if (!empty($this->multiple)) {
-            $managerOptions['multiple'] = $this->multiple;
-        }
-
-        if (!empty($this->path)) {
-            $managerOptions['path'] = $this->path;
-        }
-
-        $managerOptions[0] = '/' . $this->controller . "/manager";
-        $this->managerUrl = Yii::$app->urlManager->createUrl($managerOptions);
+        $this->getManagerOptions();
 
         $script = new JsExpression("
-            mihaildev.elFinder.register(" . Json::encode($this->getId()) . ", function (file, id) {
-                top.tinymce.activeEditor.windowManager.getParams().setUrl(file.url);
-                top.tinymce.activeEditor.windowManager.close();
+            mihaildev.elFinder.register(" . Json::encode($this->getId()) . ", function (file, fm) {
+                parent.tinymce.activeEditor.windowManager.getParams().oninsert(file, fm);
+                return false;
             });
         ");
         $this->parentView->registerJs($script);
 
         $script = new JsExpression("
-            function(field_name, url, type, win) {
-                tinymce.activeEditor.windowManager.open({
+            function(callback, value, meta) {
+                var editor = tinymce.activeEditor.windowManager.open({
                     file: '{$this->managerUrl}',
                     title: '{$this->title}',
                     width: '{$this->width}',
                     height: '{$this->height}',
                     resizable: '{$this->resizable}'
-                }, {
-                    setUrl: function(url) {
-                        var fileUrl = tinymce.activeEditor.convertURL(url, null, true);
-                        win.document.getElementById(field_name).value = fileUrl;
+                });
+                tinymce.activeEditor.windowManager.setParams({
+                    oninsert: function(file, elf) {
+                        var url, reg, info;
+
+                        // URL normalization
+                        url = file.url;
+                        reg = /\\/[^/]+?\\/\\.\\.\\//;
+                        while(url.match(reg)) {
+                            url = url.replace(reg, '/');
+                        }
+
+                        // Make file info
+                        info = file.name + ' (' + elFinder.prototype.formatSize(file.size) + ')';
+
+                        // Provide file and text for the link dialog
+                        if (meta.filetype == 'file') {
+                            callback(url, {text: info, title: info});
+                        }
+
+                        // Provide image and alt text for the image dialog
+                        if (meta.filetype == 'image') {
+                            callback(url, {alt: info});
+                        }
+
+                        // Provide alternative source and posted for the media dialog
+                        if (meta.filetype == 'media') {
+                            callback(url);
+                        }
+
+                        editor.close();
                     }
                 });
                 return false;
@@ -156,6 +201,9 @@ class MihaildevElFinder extends \dominus77\tinymce\components\FileManager
         return $script;
     }
 
+    /**
+     * @throws \yii\base\InvalidConfigException
+     */
     public function registerAsset()
     {
         if (!is_array($this->assets)) {

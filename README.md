@@ -114,7 +114,7 @@ Configure elFinder (more info [here](https://github.com/MihailDev/yii2-elfinder)
             [
                 'path'   => 'files/some',
                 'name'   => ['category' => 'my','message' => 'Some Name'], // Yii::t($category, $message)
-                'access' => ['read' => '*', 'write' => 'UserFilesAccess'] // * - for all, otherwise the access check in this example can be seen by all users with rights only UserFilesAccess
+                'access' => ['read' => '*', 'write' => 'UserFilesAccess']  // * - for all, otherwise the access check in this example can be seen by all users with rights only UserFilesAccess
             ]
         ],
         'watermark' => [
@@ -134,11 +134,15 @@ Then select file manager provider in the widget:
 
 ```php
 $form->field($model, 'text')->widget(\dominus77\tinymce\TinyMce::className(), [    
-    'clientOptions' => [...],
+    'clientOptions' => [
+        //...
+        /** @see https://www.tinymce.com/docs/configure/file-image-upload/#file_picker_types */
+        //'file_picker_types' => 'file image media',        
+    ],
     'fileManager' => [
         'class' => \dominus77\tinymce\components\MihaildevElFinder::className(),
     ],    
-    ...
+    //...
 ])
 ```
 
@@ -192,7 +196,7 @@ namespace modules\example;
 
 class Module extends \yii\base\Module
 {
-    ...
+    //...
     public function init()
     {
         parent::init();
@@ -221,7 +225,7 @@ class Module extends \yii\base\Module
             ]
         ];
     }
-    ...
+    //...
 }
 ```
 
@@ -229,7 +233,11 @@ in module view:
 
 ```php
 $form->field($model, 'text')->widget(\dominus77\tinymce\TinyMce::className(), [    
-    'clientOptions' => [...],
+    'clientOptions' => [
+        //...
+        /** @see https://www.tinymce.com/docs/configure/file-image-upload/#file_picker_types */
+        //'file_picker_types' => 'file image media',
+    ],
     'fileManager' => [
         'class' => \dominus77\tinymce\components\MihaildevElFinder::className(),
         'controller' => 'elfinder',        
@@ -238,13 +246,13 @@ $form->field($model, 'text')->widget(\dominus77\tinymce\TinyMce::className(), [
         'height' => 600,
         'resizable' => 'yes',
     ],    
-    ...
+    //...
 ]);
 ```
 
 Further Information
 -----
-Please, check the [TinyMCE plugin site](https://www.tinymce.com/docs/configure/) documentation for further information about its configuration options, and [ElFinder Extension for Yii 2](https://github.com/MihailDev/yii2-elfinder).
+Please, check the [TinyMCE site](https://www.tinymce.com/docs/configure/) and [ElFinder Extension](https://github.com/MihailDev/yii2-elfinder) documentation for further information about its configuration options.
 
 License
 -----

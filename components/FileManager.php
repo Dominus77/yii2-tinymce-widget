@@ -3,6 +3,10 @@ namespace dominus77\tinymce\components;
 
 use yii\base\Object;
 
+/**
+ * Class FileManager
+ * @package dominus77\tinymce\components
+ */
 abstract class FileManager extends Object
 {
     public function init()
@@ -11,8 +15,7 @@ abstract class FileManager extends Object
     }
 
     abstract public function getFilePickerCallback();
-
-    abstract public function getFileBrowserCallback();
+    abstract public function getFilePickerFixCallback();
 
     abstract public function registerAsset();
 }

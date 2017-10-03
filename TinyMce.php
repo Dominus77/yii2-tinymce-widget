@@ -10,7 +10,8 @@ use dominus77\tinymce\assets\TinyMceAsset;
 use dominus77\tinymce\components\xCopy;
 
 /**
- * TinyMCE renders a tinyMCE js plugin for WYSIWYG editing.
+ * Class TinyMce
+ * @package dominus77\tinymce
  */
 class TinyMce extends InputWidget
 {
@@ -81,23 +82,11 @@ class TinyMce extends InputWidget
             $fm->registerAsset();
 
             /**
-             * This option allows you to automatically fill in the fields of height and width of the image
-             * @see https://www.tinymce.com/docs/configure/file-image-upload/#file_picker_callback
-             *
-             * If you specify the key in the clientOptics file_picker_types,
-             * file_picker_callback will be used differently file_browser_callback
-             *
-             * 'clientOptions' => [
-             *     //...
-             *     'file_picker_types' => 'image',
-             *     //...
-             * ]
+             * Fix Bug TinyMCE 4.6.7
+             * @see https://github.com/tinymce/tinymce/issues/3939
              */
-            if (array_key_exists('file_picker_types', $this->clientOptions)) {
-                $this->clientOptions['file_picker_callback'] = $fm->getFilePickerCallback();
-            } else {
-                $this->clientOptions['file_browser_callback'] = $fm->getFileBrowserCallback();
-            }
+            $this->clientOptions['file_picker_callback'] = $fm->getFilePickerFixCallback();
+            //$this->clientOptions['file_picker_callback'] = $fm->getFilePickerCallback();
         }
 
         $options = Json::encode($this->clientOptions);

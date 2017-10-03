@@ -8,5 +8,5 @@ tinymce.addI18n('ru',{
 	'Toolbar'					: 'Toolbar',
 	'Highlight'					: 'Highlight',
 	'Tab size'					: 'Tab size',
-	'First Line'				: 'First Line',
+	'First Line'				: 'First Line'
 });

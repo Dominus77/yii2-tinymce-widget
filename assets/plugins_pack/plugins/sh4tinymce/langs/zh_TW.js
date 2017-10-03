@@ -8,5 +8,5 @@ tinymce.addI18n('zh_TW',{
 	'Toolbar'					: '工具列',
 	'Highlight'					: '代碼明亮部分',
 	'Tab size'					: '標籤大小',
-	'First Line'				: '第一行',
+	'First Line'				: '第一行'
 });

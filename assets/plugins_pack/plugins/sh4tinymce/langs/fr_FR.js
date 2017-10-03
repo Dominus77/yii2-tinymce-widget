@@ -8,5 +8,5 @@ tinymce.addI18n('fr_FR',{
 	'Toolbar'					: 'Menu',
 	'Highlight'					: 'Highlight',
 	'Tab size'					: 'Tabulation',
-	'First Line'				: '1\u00e8re ligne',
+	'First Line'				: '1\u00e8re ligne'
 });

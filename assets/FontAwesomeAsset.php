@@ -3,7 +3,7 @@
 namespace dominus77\tinymce\assets;
 
 use yii\web\AssetBundle;
- 
+
 /**
  * Class FontAwesomeAsset
  * @package dominus77\tinymce\assets
