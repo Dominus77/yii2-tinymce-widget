@@ -1,4 +1,4 @@
-README
+yii2-tinymce-widget
 ======
 
 Renders a [TinyMCE WYSIWYG text editor](https://www.tinymce.com) widget with the support [ElFinder Extension for Yii 2](https://github.com/MihailDev/yii2-elfinder)
