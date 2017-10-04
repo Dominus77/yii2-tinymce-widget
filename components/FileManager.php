@@ -15,7 +15,6 @@ abstract class FileManager extends Object
     }
 
     abstract public function getFilePickerCallback();
-    abstract public function getFilePickerFixCallback();
 
     abstract public function registerAsset();
 }

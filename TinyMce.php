@@ -81,12 +81,7 @@ class TinyMce extends InputWidget
             $fm->init();
             $fm->registerAsset();
 
-            /**
-             * Fix Bug TinyMCE 4.6.7
-             * @see https://github.com/tinymce/tinymce/issues/3939
-             */
-            $this->clientOptions['file_picker_callback'] = $fm->getFilePickerFixCallback();
-            //$this->clientOptions['file_picker_callback'] = $fm->getFilePickerCallback();
+            $this->clientOptions['file_picker_callback'] = $fm->getFilePickerCallback();
         }
 
         $options = Json::encode($this->clientOptions);
