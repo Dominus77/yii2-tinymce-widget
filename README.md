@@ -40,6 +40,7 @@ Once the extension is installed, simply use it in your code by  :
     'language' => 'ru',
     'clientOptions' => [        
         'theme' => 'modern',
+        'skin' => 'lightgray-gradient', //charcoal, tundora, lightgray-gradient, lightgray
         'plugins' => [
             "advlist autolink lists link image charmap print preview hr anchor pagebreak",
             "searchreplace wordcount visualblocks visualchars code fullscreen",
