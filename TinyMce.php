@@ -68,6 +68,9 @@ class TinyMce extends InputWidget
             // Plugins
             $pluginsPack = \Yii::getAlias('@dominus77/tinymce/assets/plugins_pack');
             $xCopy->copyFolder($pluginsPack, $assetPath, true, true);
+            // Skins
+            $skinsPack = \Yii::getAlias('@dominus77/tinymce/assets/skins_pack');
+            $xCopy->copyFolder($skinsPack, $assetPath, true, true);
         }
         $id = $this->options['id'];
         $this->clientOptions['selector'] = "#$id";
