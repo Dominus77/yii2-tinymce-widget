@@ -3,7 +3,7 @@
     "description": "TinyMCE widget for Yii2.",
     "type": "yii2-extension",
     "keywords": ["dominus77","yii2","extension","widget","tinymce"],
-    "license": "BSD-3-Clause",
+    "license": "BSD-3",
     "authors": [
         {
             "name": "Alexey Schevchenko",
