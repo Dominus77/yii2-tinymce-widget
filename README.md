@@ -1,7 +1,7 @@
 # yii2-tinymce-widget
 
 [![Latest Stable Version](https://poser.pugx.org/dominus77/yii2-tinymce-widget/v/stable)](https://packagist.org/packages/dominus77/yii2-tinymce-widget)
-[![License](https://poser.pugx.org/dominus77/yii2-tinymce-widget/license)](https://packagist.org/packages/dominus77/yii2-tinymce-widget)
+[![License](https://poser.pugx.org/dominus77/yii2-tinymce-widget/license)](https://github.com/Dominus77/yii2-tinymce-widget/blob/master/LICENSE.md)
 [![Total Downloads](https://poser.pugx.org/dominus77/yii2-tinymce-widget/downloads)](https://packagist.org/packages/dominus77/yii2-tinymce-widget)
 
 Renders a [TinyMCE WYSIWYG text editor](https://www.tinymce.com) widget with the support [ElFinder Extension for Yii 2](https://github.com/MihailDev/yii2-elfinder)
