@@ -11,7 +11,7 @@
         }
     ],
     "require": {
-        "yiisoft/yii2": "~2.0.13",
+        "yiisoft/yii2": "~2.0",
         "fortawesome/font-awesome": "^4.6",
         "tinymce/tinymce": ">= 4"
     },
