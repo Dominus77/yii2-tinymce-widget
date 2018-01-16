@@ -1,7 +1,6 @@
 # yii2-tinymce-widget
 
 [![Latest Stable Version](https://poser.pugx.org/dominus77/yii2-tinymce-widget/v/stable)](https://packagist.org/packages/dominus77/yii2-tinymce-widget)
-[![Latest Unstable Version](https://poser.pugx.org/dominus77/yii2-tinymce-widget/v/unstable)](https://packagist.org/packages/dominus77/yii2-tinymce-widget)
 [![License](https://poser.pugx.org/dominus77/yii2-tinymce-widget/license)](https://packagist.org/packages/dominus77/yii2-tinymce-widget)
 [![Total Downloads](https://poser.pugx.org/dominus77/yii2-tinymce-widget/downloads)](https://packagist.org/packages/dominus77/yii2-tinymce-widget)
 
