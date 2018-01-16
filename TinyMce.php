@@ -20,16 +20,19 @@ class TinyMce extends InputWidget
      * @var string
      */
     public $language = 'en';
+
     /**
      * @var array the options for the TinyMCE JS plugin.
      * Please refer to the TinyMCE JS plugin Web page for possible options.
      * @see http://www.tinymce.com/wiki.php/Configuration
      */
     public $clientOptions = [];
+
     /**
      * @var bool whether to set the on change event for the editor. This is required to be able to validate data.
      */
     public $triggerSaveOnBeforeValidateForm = true;
+
     /**
      * @var bool|array FileManager configuration
      * For example:
