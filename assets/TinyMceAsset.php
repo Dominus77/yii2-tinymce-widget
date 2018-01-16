@@ -10,12 +10,24 @@ use yii\web\AssetBundle;
  */
 class TinyMceAsset extends AssetBundle
 {
+    /**
+     * @var string
+     */
     public static $tinyPublishPath = '@vendor/tinymce/tinymce';
 
+    /**
+     * @var string
+     */
     public $sourcePath;
 
+    /**
+     * @var array
+     */
     public $js = [];
 
+    /**
+     * @inheritdoc
+     */
     public function init()
     {
         $this->sourcePath = self::$tinyPublishPath;
@@ -23,6 +35,9 @@ class TinyMceAsset extends AssetBundle
         $this->js[] = 'tinymce' . $min . '.js';
     }
 
+    /**
+     * @var array
+     */
     public $depends = [
         'dominus77\tinymce\assets\FontAwesomeAsset'
     ];

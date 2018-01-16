@@ -1,15 +1,16 @@
-yii2-tinymce-widget
-======
+# yii2-tinymce-widget
+
+[![Latest Stable Version](https://poser.pugx.org/dominus77/yii2-tinymce-widget/v/stable)](https://packagist.org/packages/dominus77/yii2-tinymce-widget)
+[![Latest Unstable Version](https://poser.pugx.org/dominus77/yii2-tinymce-widget/v/unstable)](https://packagist.org/packages/dominus77/yii2-tinymce-widget)
+[![License](https://poser.pugx.org/dominus77/yii2-tinymce-widget/license)](https://packagist.org/packages/dominus77/yii2-tinymce-widget)
+[![Total Downloads](https://poser.pugx.org/dominus77/yii2-tinymce-widget/downloads)](https://packagist.org/packages/dominus77/yii2-tinymce-widget)
 
 Renders a [TinyMCE WYSIWYG text editor](https://www.tinymce.com) widget with the support [ElFinder Extension for Yii 2](https://github.com/MihailDev/yii2-elfinder)
 
-Supplements
-------------
+## Supplements
 A plugin [TinyMCE-FontAwesome-Plugin](https://github.com/josh18/TinyMCE-FontAwesome-Plugin/tree/master) that lets you insert FontAwesome icons via TinyMCE.
 
-Installation
-------------
-
+## Installation
 The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
 
 Either run
@@ -26,9 +27,7 @@ or add
 
 to the require section of your `composer.json` file.
 
-
-Usage
------
+## Usage
 
 Once the extension is installed, simply use it in your code by  :
 
@@ -72,8 +71,8 @@ Once the extension is installed, simply use it in your code by  :
 
 ```
 
-ElFinder file manager
------
+## ElFinder file manager
+
 Install [mihaildev/yii2-elfinder](https://github.com/MihailDev/yii2-elfinder) extension.
 
 Either run
@@ -251,10 +250,8 @@ $form->field($model, 'text')->widget(\dominus77\tinymce\TinyMce::className(), [
 ]);
 ```
 
-Further Information
------
+## Further Information
 Please, check the [TinyMCE site](https://www.tinymce.com/docs/configure/) and [ElFinder Extension](https://github.com/MihailDev/yii2-elfinder) documentation for further information about its configuration options.
 
-License
------
+## License
 The BSD License (BSD). Please see [License File](https://github.com/Dominus77/yii2-tinymce-widget/blob/master/LICENSE.md) for more information.

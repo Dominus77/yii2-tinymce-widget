@@ -18,20 +18,69 @@ class MihaildevElFinder extends \dominus77\tinymce\components\FileManager
         '\mihaildev\elfinder\AssetsCallBack',
         '\mihaildev\elfinder\Assets'
     ];
+    /**
+     * @var string
+     */
     public $controller = 'elfinder';
+
+    /**
+     * @var string
+     */
     public $language;
+
+    /**
+     * @var string
+     */
     public $filter;
+
+    /**
+     * @var string
+     */
     public $path;
+
+    /**
+     * @var string
+     */
     public $title = 'ElFinder';
+
+    /**
+     * @var int
+     */
     public $width = 900;
+
+    /**
+     * @var int
+     */
     public $height = 600;
+
+    /**
+     * @var string
+     */
     public $resizable = 'yes';
+
+    /**
+     * @var bool
+     */
     public $multiple;
 
+    /**
+     * @var string
+     */
     private $_id;
+
+    /**
+     * @var int
+     */
     private static $_counter = 0;
+
+    /**
+     * @var string
+     */
     private $managerUrl;
 
+    /**
+     * @return string
+     */
     public function getId()
     {
         if ($this->_id !== null) {

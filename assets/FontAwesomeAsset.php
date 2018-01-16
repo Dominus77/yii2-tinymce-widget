@@ -10,9 +10,19 @@ use yii\web\AssetBundle;
  */
 class FontAwesomeAsset extends AssetBundle
 {
+    /**
+     * @var string
+     */
     public $sourcePath = '@vendor/fortawesome/font-awesome';
+
+    /**
+     * @var array
+     */
     public $css = [];
 
+    /**
+     * @inheritdoc
+     */
     public function init()
     {
         parent::init();

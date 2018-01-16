@@ -1,14 +1,18 @@
 <?php
+
 namespace dominus77\tinymce\components;
 
-use yii\base\Object;
+use yii\base\BaseObject;
 
 /**
  * Class FileManager
  * @package dominus77\tinymce\components
  */
-abstract class FileManager extends Object
+abstract class FileManager extends BaseObject
 {
+    /**
+     * @inheritdoc
+     */
     public function init()
     {
         parent::init();
