@@ -3,7 +3,7 @@
     "description": "TinyMCE widget for Yii2.",
     "type": "yii2-extension",
     "keywords": ["dominus77","yii2","extension","widget","tinymce"],
-    "license": "BSD-3",
+    "license": "BSD-3-Clause",
     "authors": [
         {
             "name": "Alexey Schevchenko",
@@ -13,7 +13,7 @@
     "require": {
         "yiisoft/yii2": "~2.0",
         "fortawesome/font-awesome": "^4.6",
-        "tinymce/tinymce": ">= 4"
+        "tinymce/tinymce": "~4.0"
     },
     "autoload": {
         "psr-4": {
