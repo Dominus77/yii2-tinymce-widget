@@ -1,4 +1,5 @@
 <?php
+
 namespace dominus77\tinymce\components;
 
 use Yii;
@@ -187,6 +188,7 @@ class MihaildevElFinder extends \dominus77\tinymce\components\FileManager
     }
 
     /**
+     * @return bool
      * @throws \yii\base\InvalidConfigException
      */
     public function registerAsset()
@@ -197,5 +199,6 @@ class MihaildevElFinder extends \dominus77\tinymce\components\FileManager
         foreach ($this->assets as $asset) {
             $this->parentView->registerAssetBundle($asset);
         }
+        return true;
     }
 }
