@@ -1,4 +1,4 @@
-# yii2-tinymce-widget вывывыв
+# yii2-tinymce-widget
 
 [![Latest Stable Version](https://poser.pugx.org/dominus77/yii2-tinymce-widget/v/stable)](https://packagist.org/packages/dominus77/yii2-tinymce-widget)
 [![License](https://poser.pugx.org/dominus77/yii2-tinymce-widget/license)](https://github.com/Dominus77/yii2-tinymce-widget/blob/master/LICENSE.md)
