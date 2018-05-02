@@ -253,4 +253,4 @@ $form->field($model, 'text')->widget(\dominus77\tinymce\TinyMce::className(), [
 Please, check the [TinyMCE site](https://www.tinymce.com/docs/configure/) and [ElFinder Extension](https://github.com/MihailDev/yii2-elfinder) documentation for further information about its configuration options.
 
 ## License
-The BSD License (BSD). Please see [License File](https://github.com/Dominus77/yii2-tinymce-widget/blob/master/LICENSE.md) for more information.
+The MIT License (MIT). Please see [License File](https://github.com/Dominus77/yii2-tinymce-widget/blob/master/LICENSE.md) for more information.
