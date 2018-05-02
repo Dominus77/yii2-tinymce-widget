@@ -62,6 +62,7 @@ class TinyMce extends InputWidget
     {
         $js = [];
         $view = $this->getView();
+        TinyMceAsset::register($view);
         if ($tinyAssetBundle = TinyMceAsset::register($view)) {
             $xCopy = new xCopy();
             $assetPath = $tinyAssetBundle->basePath;
