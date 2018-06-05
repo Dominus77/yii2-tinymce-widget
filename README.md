@@ -77,13 +77,13 @@ Install [mihaildev/yii2-elfinder](https://github.com/MihailDev/yii2-elfinder) ex
 Either run
 
 ```
-php composer.phar require --prefer-dist mihaildev/yii2-elfinder "~2.0"
+php composer.phar require --prefer-dist mihaildev/yii2-elfinder "~1.2"
 ```
 
 or add
 
 ```
-"mihaildev/yii2-elfinder": "~2.0"
+"mihaildev/yii2-elfinder": "~1.2"
 ```
 
 Configure elFinder (more info [here](https://github.com/MihailDev/yii2-elfinder))
