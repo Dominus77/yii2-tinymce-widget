@@ -36,7 +36,9 @@ Once the extension is installed, simply use it in your code by  :
         'rows' => 6
     ], 
     'language' => 'ru',
-    'clientOptions' => [        
+    'clientOptions' => [
+        'menubar' => true,
+        'statusbar' => true,        
         'theme' => 'modern',
         'skin' => 'lightgray-gradient', //charcoal, tundora, lightgray-gradient, lightgray
         'plugins' => [
