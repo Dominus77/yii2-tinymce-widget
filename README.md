@@ -33,7 +33,8 @@ Once the extension is installed, simply use it in your code by  :
 ```php
 <?= $form->field($model, 'text')->widget(\dominus77\tinymce\TinyMce::className(), [    
     'options' => [
-        'rows' => 6
+        'rows' => 6,
+        'placeholder' => true,
     ], 
     'language' => 'ru',
     'clientOptions' => [
@@ -42,7 +43,7 @@ Once the extension is installed, simply use it in your code by  :
         'theme' => 'modern',
         'skin' => 'lightgray-gradient', //charcoal, tundora, lightgray-gradient, lightgray
         'plugins' => [
-            "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+            "advlist autolink lists link image charmap print preview hr anchor pagebreak placeholder",
             "searchreplace wordcount visualblocks visualchars code fullscreen",
             "insertdatetime media nonbreaking save table contextmenu directionality",
             "emoticons template paste textcolor colorpicker textpattern imagetools codesample toc fontawesome noneditable",
