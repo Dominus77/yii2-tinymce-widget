@@ -15,13 +15,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require dominus77/yii2-tinymce-widget "~2.0"
+php composer.phar require dominus77/yii2-tinymce-widget "~2.0.2"
 ```
 
 or add
 
 ```
-"dominus77/yii2-tinymce-widget": "~2.0"
+"dominus77/yii2-tinymce-widget": "~2.0.2"
 ```
 
 to the require section of your `composer.json` file.
