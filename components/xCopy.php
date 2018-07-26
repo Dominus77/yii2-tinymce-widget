@@ -22,6 +22,7 @@ class xCopy
         if (is_dir($d1)) {
             $d2 = self::mkdir_safe($d2, $force);
             if (!$d2) {
+                /** @deprecated since 2.0.14. Use [[debug()]] instead. */
                 Yii::trace("!!fail $d2", __METHOD__);
                 return;
             }
@@ -34,6 +35,7 @@ class xCopy
         } else {
             $ok = self::copyFile($d1, $d2, $upd);
             $ok = ($ok) ? "ok-- " : " -- ";
+            /** @deprecated since 2.0.14. Use [[debug()]] instead. */
             Yii::trace("{$ok}$d1", __METHOD__);
         }
     }

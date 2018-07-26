@@ -18,7 +18,13 @@ abstract class FileManager extends BaseObject
         parent::init();
     }
 
+    /**
+     * @return mixed
+     */
     abstract public function getFilePickerCallback();
 
+    /**
+     * @return mixed
+     */
     abstract public function registerAsset();
 }

@@ -36,14 +36,15 @@ class TinyMce extends InputWidget
     /**
      * @var bool|array FileManager configuration
      * For example:
-     * 'fileManager' => array(
+     * 'fileManager' => [
      *       'class' => 'FileManager',
-     * )
+     * ]
      */
     public $fileManager = false;
 
     /**
-     * @inheritdoc
+     * @return string|void
+     * @throws \yii\base\InvalidConfigException
      */
     public function run()
     {
@@ -57,6 +58,7 @@ class TinyMce extends InputWidget
 
     /**
      * Registers tinyMCE js plugin
+     * @throws \yii\base\InvalidConfigException
      */
     protected function registerClientScript()
     {
@@ -76,8 +78,8 @@ class TinyMce extends InputWidget
             $skinsPack = Yii::getAlias('@dominus77/tinymce/assets/skins_pack');
             $xCopy->copyFolder($skinsPack, $assetPath, true, true);
         }
-        $id = $this->options['id'];
-        $this->clientOptions['selector'] = "#$id";
+        $id = $this->options['id'] ? $this->options['id'] : $this->getId();
+        $this->clientOptions['selector'] = "#{$id}";
         $this->clientOptions['language'] = isset($this->clientOptions['language']) ? $this->clientOptions['language'] : $this->language;
 
         if ($this->fileManager !== false) {
