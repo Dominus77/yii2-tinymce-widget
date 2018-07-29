@@ -7,7 +7,7 @@ use yii\helpers\Html;
 use yii\helpers\Json;
 use yii\widgets\InputWidget;
 use dominus77\tinymce\assets\TinyMceAsset;
-use dominus77\tinymce\components\xCopy;
+use dominus77\tinymce\helpers\xCopy;
 
 /**
  * Class TinyMce

@@ -1,13 +1,12 @@
 <?php
 
-namespace dominus77\tinymce\components;
+namespace dominus77\tinymce\helpers;
 
 use Yii;
 
 /**
  * Class xCopy
- * Copy directory
- * @package dominus77\tinymce\components
+ * @package dominus77\tinymce\helpers
  */
 class xCopy
 {
