@@ -106,7 +106,7 @@ $fontAwesome = FontAwesomeAsset::register($this);
     //...
     'content_css' => [
         // other css
-        $fontAwesome->baseUrl . '/' . $fontAwesome->css[0], // add fontawesome icon
+        $fontAwesome->baseUrl . '/' . $fontAwesome->css[0], // Adding icons to the content area
     ]
 ]
 
