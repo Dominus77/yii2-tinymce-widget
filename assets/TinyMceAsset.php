@@ -39,6 +39,6 @@ class TinyMceAsset extends AssetBundle
      * @var array
      */
     public $depends = [
-        'dominus77\tinymce\assets\FontAwesomeAsset'
+        //'dominus77\tinymce\assets\FontAwesomeAsset'
     ];
 }
