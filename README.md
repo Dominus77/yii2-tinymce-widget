@@ -46,12 +46,12 @@ Once the extension is installed, simply use it in your code by  :
             "advlist autolink lists link image charmap print preview hr anchor pagebreak placeholder",
             "searchreplace wordcount visualblocks visualchars code fullscreen",
             "insertdatetime media nonbreaking save table contextmenu directionality",
-            "emoticons template paste textcolor colorpicker textpattern imagetools codesample toc fontawesome noneditable",
+            "emoticons template paste textcolor colorpicker textpattern imagetools codesample toc noneditable",
         ],
         'noneditable_noneditable_class' => 'fa',
         'extended_valid_elements' => 'span[class|style]',
         'toolbar1' => "undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
-        'toolbar2' => "print preview media | forecolor backcolor emoticons fontawesome | codesample",
+        'toolbar2' => "print preview media | forecolor backcolor emoticons | codesample",
         'image_advtab' => true,
         'templates' => [
             [
@@ -65,33 +65,32 @@ Once the extension is installed, simply use it in your code by  :
         ],
         'content_css' => [
             '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
-            '//www.tinymce.com/css/codepen.min.css',
-            '//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
+            '//www.tinymce.com/css/codepen.min.css',            
         ]
     ]
 ]);?>
 
 ```
-## Plugin fonawesome
+## Plugin fontawesome
 
 The plugin is supported by FontAwesome version 4.7. 
 In this version of the widget, due to possible conflicts with the new version, the dependency was removed.
 But the support of the plug-in itself remained. To turn it on, you need to install FontAwesome version 4.7
 
 ```
-php composer.phar require mihaildev/yii2-elfinder "^4.7"
+php composer.phar require fortawesome/font-awesome "^4.7"
 ```
 or add
 
 ```
 "fortawesome/font-awesome": "^4.7"
 ```
-The connection will look like this:
+The connection might look like this:
 
 ````
 use dominus77\tinymce\assets\FontAwesomeAsset;
 
-$fonawesome = FontAwesomeAsset::register($this);
+$fontAwesome = FontAwesomeAsset::register($this);
 
 ````
 
@@ -100,14 +99,14 @@ $fonawesome = FontAwesomeAsset::register($this);
 'clientOptions' => [
     //...
     'plugins' => [            
-        "fontawesome",
+        "fontawesome", // add plugin
         // other plugins
     ],        
-    'toolbar' => "fontawesome",
+    'toolbar' => "fontawesome", // add button
     //...
     'content_css' => [
         // other css
-        '//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
+        $fontAwesome->baseUrl . '/' . $fontAwesome->css[0], // add fontawesome icon
     ]
 ]
 
