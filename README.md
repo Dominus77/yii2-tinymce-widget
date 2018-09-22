@@ -72,6 +72,46 @@ Once the extension is installed, simply use it in your code by  :
 ]);?>
 
 ```
+## Plugin fonawesome
+
+The plugin is supported by FontAwesome version 4.7. 
+In this version of the widget, due to possible conflicts with the new version, the dependency was removed.
+But the support of the plug-in itself remained. To turn it on, you need to install FontAwesome version 4.7
+
+```
+php composer.phar require mihaildev/yii2-elfinder "^4.7"
+```
+or add
+
+```
+"fortawesome/font-awesome": "^4.7"
+```
+The connection will look like this:
+
+````
+use dominus77\tinymce\assets\FontAwesomeAsset;
+
+$fonawesome = FontAwesomeAsset::register($this);
+
+````
+
+```
+//...
+'clientOptions' => [
+    //...
+    'plugins' => [            
+        "fontawesome",
+        // other plugins
+    ],        
+    'toolbar' => "fontawesome",
+    //...
+    'content_css' => [
+        // other css
+        '//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
+    ]
+]
+
+```
 
 ## ElFinder file manager
 
