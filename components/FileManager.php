@@ -14,7 +14,6 @@ abstract class FileManager extends BaseObject
      * @return mixed
      */
     abstract public function getFilePickerCallback();
-
     /**
      * @return mixed
      */
