@@ -1,5 +1,6 @@
 /**
  * TinyMCE 4
+ *
  */
 tinymce.PluginManager.requireLangPack('typograf', 'en,ru');
 tinymce.PluginManager.add('typograf', function (editor, url) {
@@ -12,15 +13,29 @@ tinymce.PluginManager.add('typograf', function (editor, url) {
                 editor.setContent(tp.execute(editor.getContent()));
                 editor.undoManager.add();
             }
-        };
+        },
+        data = {},
+        tpDefault = {},
+        tpSettings = tinymce.activeEditor.settings.typograf;
+
+    if(tpSettings) {
+        data = tpSettings;
+    }
+
+    tpDefault.locale = ['ru', 'en-US'];
+    tpDefault.mode = 'name';
+
+    if (!data.locale) {
+        data.locale = tpDefault.locale;
+    }
+    if (!data.mode) {
+        data.mode = tpDefault.mode;
+    }
 
     scriptLoader.add(url + '/dist/typograf.all.min.js');
 
     scriptLoader.loadQueue(function () {
-        tp = new Typograf({
-            locale: ['ru', 'en-US'],
-            mode: 'name'
-        });
+        tp = new Typograf(data);
     });
 
     editor.addButton('typograf', {
@@ -38,7 +53,7 @@ tinymce.PluginManager.add('typograf', function (editor, url) {
 
     return {
         getMetadata: function () {
-            return  {
+            return {
                 name: 'Typography',
                 url: 'https://github.com/Dominus77/typograf'
             };
