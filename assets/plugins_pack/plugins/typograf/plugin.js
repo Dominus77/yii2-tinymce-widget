@@ -20,7 +20,7 @@ tinymce.PluginManager.add('typograf', function (editor, url) {
         });
     });
 
-    editor.addButton('typograf', {
+    editor.ui.registry.addButton('typograf', {
         text: 'Typography',
         icon: 'blockquote',
         onclick: typo
