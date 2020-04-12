@@ -21,7 +21,7 @@ class FontAwesomeAsset extends AssetBundle
     public function init()
     {
         parent::init();
-        $min = YII_ENV_DEV ? '' : '.min';
+        $min = !YII_ENV_DEV ? '.min' : '';
         $this->css[] = 'css/font-awesome' . $min . '.css';
     }
 }

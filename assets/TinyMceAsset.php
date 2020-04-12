@@ -25,7 +25,7 @@ class TinyMceAsset extends AssetBundle
     public function init()
     {
         $this->sourcePath = self::$tinyPublishPath;
-        $min = YII_ENV_DEV ? '' : '.min';
+        $min = !YII_ENV_DEV ? '.min' : '';
         $this->js[] = 'tinymce' . $min . '.js';
     }
 }
