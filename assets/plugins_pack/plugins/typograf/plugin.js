@@ -20,10 +20,12 @@ tinymce.PluginManager.add('typograf', function (editor, url) {
         });
     });
 
-    editor.ui.registry.addMenuButton('typograf', {
-        icon: 'blockquote',
+    editor.ui.registry.addButton('typograf', {
+        text: 'Typography',
         tooltip: 'Typography',
-        fetch: (callback) => callback(typo)
+        onAction: function (_){
+            typo
+        }
         //onclick: typo
     });
 
@@ -31,7 +33,9 @@ tinymce.PluginManager.add('typograf', function (editor, url) {
         context: 'format',
         text: 'Typography',
         icon: 'blockquote',
-        fetch: (callback) => callback(typo)
+        onAction: function (_){
+            typo
+        }
         //onclick: typo
     });
 
