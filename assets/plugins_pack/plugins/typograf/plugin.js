@@ -21,16 +21,18 @@ tinymce.PluginManager.add('typograf', function (editor, url) {
     });
 
     editor.ui.registry.addMenuButton('typograf', {
-        text: 'Typography',
         icon: 'blockquote',
-        onclick: typo
+        tooltip: 'Typography',
+        fetch: (callback) => callback(typo)
+        //onclick: typo
     });
 
-    editor.addMenuItem('typograf', {
+    editor.ui.registry.addMenuItem('typograf', {
         context: 'format',
         text: 'Typography',
         icon: 'blockquote',
-        onclick: typo
+        fetch: (callback) => callback(typo)
+        //onclick: typo
     });
 
     return {
