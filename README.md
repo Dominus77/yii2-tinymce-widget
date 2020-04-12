@@ -21,7 +21,7 @@ composer require dominus77/yii2-tinymce-widget
 or add
 
 ```
-"dominus77/yii2-tinymce-widget": "~2.0.2"
+"dominus77/yii2-tinymce-widget": "~2.1.0"
 ```
 
 to the require section of your `composer.json` file.
