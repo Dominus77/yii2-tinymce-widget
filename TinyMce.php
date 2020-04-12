@@ -36,6 +36,11 @@ class TinyMce extends InputWidget
     public $triggerSaveOnBeforeValidateForm = true;
 
     /**
+     * @var int Set chmod for asset packages folder
+     */
+    public $chmodAssetResourceMode = 0777;
+
+    /**
      * @var bool|array FileManager configuration
      * For example:
      * 'fileManager' => [
@@ -64,7 +69,6 @@ class TinyMce extends InputWidget
      */
     protected function registerClientScript()
     {
-        $js = [];
         $view = $this->getView();
         if ($tinyAssetBundle = TinyMceAsset::register($view)) {
             $xCopy = new xCopy();
@@ -78,8 +82,11 @@ class TinyMce extends InputWidget
             // Skins
             $skinsPack = Yii::getAlias('@dominus77/tinymce/assets/skins_pack');
             $xCopy->copyFolder($skinsPack, $assetPath, true, true);
+
             // Set chmod
-            xCopy::chmodR($assetPath, 0777);
+            if($this->chmodAssetResourceMode && is_int($this->chmodAssetResourceMode)) {
+                xCopy::chmodR($assetPath, $this->chmodAssetResourceMode);
+            }
         }
         $id = $this->options['id'] ?: $this->getId();
         $this->clientOptions['selector'] = "#{$id}";
@@ -95,7 +102,7 @@ class TinyMce extends InputWidget
 
             $this->clientOptions['file_picker_callback'] = $fm->getFilePickerCallback();
         }
-
+        $js = [];
         $options = Json::encode($this->clientOptions);
         $js[] = "tinymce.init({$options});";
         if ($this->triggerSaveOnBeforeValidateForm) {
