@@ -21,7 +21,7 @@ composer require dominus77/yii2-tinymce-widget
 or add
 
 ```
-"dominus77/yii2-tinymce-widget": "~2.1.0"
+"dominus77/yii2-tinymce-widget": "^2.1"
 ```
 
 to the require section of your `composer.json` file.
@@ -43,12 +43,12 @@ Once the extension is installed, simply use it in your code by  :
         'theme' => 'modern',
         'skin' => 'lightgray-gradient', //charcoal, tundora, lightgray-gradient, lightgray
         'plugins' => [
-            'advlist autolink lists link image charmap print preview hr anchor pagebreak placeholder',
+            'typograf advlist autolink lists link image charmap print preview hr anchor pagebreak placeholder',
             'searchreplace wordcount visualblocks visualchars code fullscreen',
             'insertdatetime media nonbreaking save table contextmenu directionality',
-            'emoticons template paste textcolor colorpicker textpattern imagetools codesample toc noneditable typograf',
+            'emoticons template paste textcolor colorpicker textpattern imagetools codesample toc noneditable',
         ],
-        'contextmenu' => 'typograf',
+        'contextmenu' => 'typograf | link image inserttable | cell row column deletetable',
         'noneditable_noneditable_class' => 'fa',
         'extended_valid_elements' => 'span[class|style]',
         'toolbar1' => 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
@@ -120,13 +120,13 @@ Install [mihaildev/yii2-elfinder](https://github.com/MihailDev/yii2-elfinder) ex
 Either run
 
 ```
-composer require --prefer-dist mihaildev/yii2-elfinder "~1.2"
+composer require --prefer-dist mihaildev/yii2-elfinder "^1.3"
 ```
 
 or add
 
 ```
-"mihaildev/yii2-elfinder": "~1.2"
+"mihaildev/yii2-elfinder": "^1.3"
 ```
 
 Configure elFinder (more info [here](https://github.com/MihailDev/yii2-elfinder))

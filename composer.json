@@ -11,6 +11,7 @@
         }
     ],
     "require": {
+        "ext-gd": "*",
         "yiisoft/yii2": "~2.0",
         "tinymce/tinymce": "^4.0"
     },

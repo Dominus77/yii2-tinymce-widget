@@ -66,7 +66,6 @@ class TinyMce extends InputWidget
     {
         $js = [];
         $view = $this->getView();
-        TinyMceAsset::register($view);
         if ($tinyAssetBundle = TinyMceAsset::register($view)) {
             $xCopy = new xCopy();
             $assetPath = $tinyAssetBundle->basePath;
@@ -79,6 +78,8 @@ class TinyMce extends InputWidget
             // Skins
             $skinsPack = Yii::getAlias('@dominus77/tinymce/assets/skins_pack');
             $xCopy->copyFolder($skinsPack, $assetPath, true, true);
+            // Set chmod
+            xCopy::chmodR($assetPath, 0777);
         }
         $id = $this->options['id'] ?: $this->getId();
         $this->clientOptions['selector'] = "#{$id}";
