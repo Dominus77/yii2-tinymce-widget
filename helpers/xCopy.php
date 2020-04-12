@@ -104,6 +104,7 @@ class xCopy
                 }
             }
         }
+
         closedir($dh);
         if (chmod($path, $mode)) {
             return true;

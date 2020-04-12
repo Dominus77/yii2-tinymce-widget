@@ -15,8 +15,11 @@ use yii\web\View;
 class MihaildevElFinder extends FileManager
 {
     public $tinyMceSettings = [];
+
     /** @var  View */
     public $parentView;
+
+    /** @var array  */
     public $assets = [
         '\mihaildev\elfinder\AssetsCallBack',
         '\mihaildev\elfinder\Assets'
