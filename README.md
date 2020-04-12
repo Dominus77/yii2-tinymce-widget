@@ -1,4 +1,4 @@
-# yii2-tinymce-widget
+# TinyMCE 4  widget for Yii2
 
 [![Latest Stable Version](https://poser.pugx.org/dominus77/yii2-tinymce-widget/v/stable)](https://packagist.org/packages/dominus77/yii2-tinymce-widget)
 [![License](https://poser.pugx.org/dominus77/yii2-tinymce-widget/license)](https://github.com/Dominus77/yii2-tinymce-widget/blob/master/LICENSE.md)
@@ -8,6 +8,8 @@ Renders a [TinyMCE WYSIWYG text editor](https://www.tinymce.com) widget with the
 
 ## Supplements
 A plugin [TinyMCE-FontAwesome-Plugin](https://github.com/josh18/TinyMCE-FontAwesome-Plugin/tree/master) that lets you insert FontAwesome icons via TinyMCE.
+
+A plugin [Typografy](https://github.com/Dominus77/typograf) that lets implement [JavaScript typographer](https://github.com/typograf/typograf) in TinyMCE.
 
 ## Installation
 The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
