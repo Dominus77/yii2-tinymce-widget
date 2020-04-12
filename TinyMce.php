@@ -6,7 +6,9 @@ use Yii;
 use yii\helpers\Html;
 use yii\helpers\Json;
 use yii\widgets\InputWidget;
+use yii\base\InvalidConfigException;
 use dominus77\tinymce\assets\TinyMceAsset;
+use dominus77\tinymce\components\FileManager;
 use dominus77\tinymce\helpers\xCopy;
 
 /**
@@ -44,7 +46,7 @@ class TinyMce extends InputWidget
 
     /**
      * @return string|void
-     * @throws \yii\base\InvalidConfigException
+     * @throws InvalidConfigException
      */
     public function run()
     {
@@ -58,7 +60,7 @@ class TinyMce extends InputWidget
 
     /**
      * Registers tinyMCE js plugin
-     * @throws \yii\base\InvalidConfigException
+     * @throws InvalidConfigException
      */
     protected function registerClientScript()
     {
@@ -78,12 +80,12 @@ class TinyMce extends InputWidget
             $skinsPack = Yii::getAlias('@dominus77/tinymce/assets/skins_pack');
             $xCopy->copyFolder($skinsPack, $assetPath, true, true);
         }
-        $id = $this->options['id'] ? $this->options['id'] : $this->getId();
+        $id = $this->options['id'] ?: $this->getId();
         $this->clientOptions['selector'] = "#{$id}";
         $this->clientOptions['language'] = isset($this->clientOptions['language']) ? $this->clientOptions['language'] : $this->language;
 
         if ($this->fileManager !== false) {
-            /** @var $fm \dominus77\tinymce\components\FileManager */
+            /** @var $fm FileManager */
             $fm = Yii::createObject(array_merge($this->fileManager, [
                 'tinyMceSettings' => $this->clientOptions,
                 'parentView' => $view]));

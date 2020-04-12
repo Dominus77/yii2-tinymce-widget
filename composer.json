@@ -12,8 +12,17 @@
     ],
     "require": {
         "yiisoft/yii2": "~2.0",
-        "tinymce/tinymce": "~4.0"
+        "tinymce/tinymce": "^5.2"
     },
+    "require-dev": {
+        "roave/security-advisories": "dev-master"
+    },
+    "repositories":[
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "dominus77\\tinymce\\": ""

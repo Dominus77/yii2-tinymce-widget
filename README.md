@@ -31,7 +31,7 @@ to the require section of your `composer.json` file.
 Once the extension is installed, simply use it in your code by  :
 
 ```php
-<?= $form->field($model, 'text')->widget(\dominus77\tinymce\TinyMce::className(), [    
+<?= $form->field($model, 'text')->widget(\dominus77\tinymce\TinyMce::class, [    
     'options' => [
         'rows' => 6,
         'placeholder' => true,
@@ -43,15 +43,15 @@ Once the extension is installed, simply use it in your code by  :
         'theme' => 'modern',
         'skin' => 'lightgray-gradient', //charcoal, tundora, lightgray-gradient, lightgray
         'plugins' => [
-            "advlist autolink lists link image charmap print preview hr anchor pagebreak placeholder",
-            "searchreplace wordcount visualblocks visualchars code fullscreen",
-            "insertdatetime media nonbreaking save table contextmenu directionality",
-            "emoticons template paste textcolor colorpicker textpattern imagetools codesample toc noneditable",
+            'advlist autolink lists link image charmap print preview hr anchor pagebreak placeholder',
+            'searchreplace wordcount visualblocks visualchars code fullscreen',
+            'insertdatetime media nonbreaking save table contextmenu directionality',
+            'emoticons template paste textcolor colorpicker textpattern imagetools codesample toc noneditable typograf',
         ],
         'noneditable_noneditable_class' => 'fa',
         'extended_valid_elements' => 'span[class|style]',
-        'toolbar1' => "undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
-        'toolbar2' => "print preview media | forecolor backcolor emoticons | codesample",
+        'toolbar1' => 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+        'toolbar2' => 'print preview media | forecolor backcolor emoticons | codesample | typograf',
         'image_advtab' => true,
         'templates' => [
             [
@@ -174,14 +174,14 @@ Configure elFinder (more info [here](https://github.com/MihailDev/yii2-elfinder)
 Then select file manager provider in the widget:
 
 ```php
-$form->field($model, 'text')->widget(\dominus77\tinymce\TinyMce::className(), [    
+$form->field($model, 'text')->widget(\dominus77\tinymce\TinyMce::class, [    
     'clientOptions' => [
         //...
         /** @see https://www.tinymce.com/docs/configure/file-image-upload/#file_picker_types */
         //'file_picker_types' => 'file image media',        
     ],
     'fileManager' => [
-        'class' => \dominus77\tinymce\components\MihaildevElFinder::className(),
+        'class' => \dominus77\tinymce\components\MihaildevElFinder::class,
     ],    
     //...
 ])
@@ -273,14 +273,14 @@ class Module extends \yii\base\Module
 in module view:
 
 ```php
-$form->field($model, 'text')->widget(\dominus77\tinymce\TinyMce::className(), [    
+$form->field($model, 'text')->widget(\dominus77\tinymce\TinyMce::class, [    
     'clientOptions' => [
         //...
         /** @see https://www.tinymce.com/docs/configure/file-image-upload/#file_picker_types */
         //'file_picker_types' => 'file image media',
     ],
     'fileManager' => [
-        'class' => \dominus77\tinymce\components\MihaildevElFinder::className(),
+        'class' => \dominus77\tinymce\components\MihaildevElFinder::class,
         'controller' => 'elfinder',        
         'title' => 'My File Manager',
         'width' => 900,

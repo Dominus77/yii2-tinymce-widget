@@ -11,44 +11,48 @@ use Yii;
 class xCopy
 {
     /**
-     * @param $d1
-     * @param $d2
-     * @param bool $upd
-     * @param bool $force
+     * @param string $d1 Path From
+     * @param string|bool $d2 Path to or result operation
+     * @param bool $upd if update then true else false
+     * @param bool $force if force then true else false
      */
     public function copyFolder($d1, $d2, $upd = true, $force = true)
     {
         if (is_dir($d1)) {
-            $d2 = self::mkdir_safe($d2, $force);
+            $d2 = $this->mkdirSafe($d2, $force);
             if (!$d2) {
-                /** @deprecated since 2.0.14. Use [[debug()]] instead. */
-                Yii::trace("!!fail $d2", __METHOD__);
+                Yii::debug("!!fail $d2", __METHOD__);
                 return;
             }
             $d = dir($d1);
             while (false !== ($entry = $d->read())) {
-                if ($entry != '.' && $entry != '..')
+                if ($entry !== '.' && $entry !== '..') {
                     self::copyFolder("$d1/$entry", "$d2/$entry", $upd, $force);
+                }
             }
             $d->close();
         } else {
-            $ok = self::copyFile($d1, $d2, $upd);
-            $ok = ($ok) ? "ok-- " : " -- ";
-            /** @deprecated since 2.0.14. Use [[debug()]] instead. */
-            Yii::trace("{$ok}$d1", __METHOD__);
+            $ok = $this->copyFile($d1, $d2, $upd);
+            $ok = ($ok) ? 'ok-- ' : ' -- ';
+            Yii::debug("{$ok}$d1", __METHOD__);
         }
     }
 
     /**
-     * @param $dir
-     * @param $force
+     * @param string $dir
+     * @param bool $force
      * @return bool
      */
-    private function mkdir_safe($dir, $force)
+    private function mkdirSafe($dir = '', $force = false)
     {
         if (file_exists($dir)) {
-            if (is_dir($dir)) return $dir;
-            else if (!$force) return false;
+            if (is_dir($dir)) {
+                return $dir;
+            }
+
+            if (!$force) {
+                return false;
+            }
             unlink($dir);
         }
         return (mkdir($dir, 0777, true)) ? $dir : false;
@@ -65,10 +69,45 @@ class xCopy
         $time1 = filemtime($f1);
         if (file_exists($f2)) {
             $time2 = filemtime($f2);
-            if ($time2 >= $time1 && $upd) return false;
+            if ($time2 >= $time1 && $upd) {
+                return false;
+            }
         }
         $ok = copy($f1, $f2);
-        if ($ok) touch($f2, $time1);
+        if ($ok) {
+            touch($f2, $time1);
+        }
         return $ok;
+    }
+
+    /**
+     * Recursive chmod
+     * @param string $path
+     * @param int $mode
+     * @return bool
+     */
+    public static function chmodR($path, $mode)
+    {
+        if (!is_dir($path)) {
+            return chmod($path, $mode);
+        }
+        $dh = opendir($path);
+        while ($file = readdir($dh)) {
+            if ($file !== '.' && $file !== '..') {
+                $fullPath = $path . '/' . $file;
+                if (!is_dir($fullPath)) {
+                    if (!chmod($fullPath, $mode)) {
+                        return false;
+                    }
+                } else if (!self::chmodR($fullPath, $mode)) {
+                    return false;
+                }
+            }
+        }
+        closedir($dh);
+        if (chmod($path, $mode)) {
+            return true;
+        }
+        return false;
     }
 }

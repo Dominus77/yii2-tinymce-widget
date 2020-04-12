@@ -11,14 +11,6 @@ use yii\base\BaseObject;
 abstract class FileManager extends BaseObject
 {
     /**
-     * @inheritdoc
-     */
-    public function init()
-    {
-        parent::init();
-    }
-
-    /**
      * @return mixed
      */
     abstract public function getFilePickerCallback();

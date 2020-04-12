@@ -3,17 +3,19 @@
 namespace dominus77\tinymce\components;
 
 use Yii;
+use yii\base\InvalidConfigException;
 use yii\helpers\Json;
 use yii\web\JsExpression;
+use yii\web\View;
 
 /**
  * Class MihaildevElFinder
  * @package dominus77\tinymce\components
  */
-class MihaildevElFinder extends \dominus77\tinymce\components\FileManager
+class MihaildevElFinder extends FileManager
 {
     public $tinyMceSettings = [];
-    /** @var  \yii\web\View */
+    /** @var  View */
     public $parentView;
     public $assets = [
         '\mihaildev\elfinder\AssetsCallBack',
@@ -86,9 +88,8 @@ class MihaildevElFinder extends \dominus77\tinymce\components\FileManager
     {
         if ($this->_id !== null) {
             return $this->_id;
-        } else {
-            return $this->_id = 'elfd' . self::$_counter++;
         }
+        return $this->_id = 'elfd' . self::$_counter++;
     }
 
     /**
@@ -121,7 +122,7 @@ class MihaildevElFinder extends \dominus77\tinymce\components\FileManager
             $managerOptions['path'] = $this->path;
         }
 
-        $managerOptions[0] = '/' . $this->controller . "/manager";
+        $managerOptions[0] = '/' . $this->controller . '/manager';
         $this->managerUrl = Yii::$app->urlManager->createUrl($managerOptions);
 
         return $managerOptions;
@@ -134,13 +135,13 @@ class MihaildevElFinder extends \dominus77\tinymce\components\FileManager
     {
         $this->getManagerOptions();
 
-        $script = new JsExpression("
-            mihaildev.elFinder.register(" . Json::encode($this->getId()) . ", function (file, fm) {
+        $script = new JsExpression('
+            mihaildev.elFinder.register(' . Json::encode($this->getId()) . ', function (file, fm) {
                 parent.tinymce.activeEditor.windowManager.getParams().oninsert(file, fm);
                 parent.tinymce.activeEditor.windowManager.close();
                 return false;
             });
-        ");
+        ');
         $this->parentView->registerJs($script);
 
         $script = new JsExpression("
@@ -188,8 +189,8 @@ class MihaildevElFinder extends \dominus77\tinymce\components\FileManager
     }
 
     /**
-     * @return bool
-     * @throws \yii\base\InvalidConfigException
+     * @return bool|mixed
+     * @throws InvalidConfigException
      */
     public function registerAsset()
     {
