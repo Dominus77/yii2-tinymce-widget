@@ -48,6 +48,7 @@ Once the extension is installed, simply use it in your code by  :
             'insertdatetime media nonbreaking save table contextmenu directionality',
             'emoticons template paste textcolor colorpicker textpattern imagetools codesample toc noneditable typograf',
         ],
+        'contextmenu' => 'typograf',
         'noneditable_noneditable_class' => 'fa',
         'extended_valid_elements' => 'span[class|style]',
         'toolbar1' => 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
@@ -87,14 +88,14 @@ or add
 ```
 The connection might look like this:
 
-````
+```php
 use dominus77\tinymce\assets\FontAwesomeAsset;
 
 $fontAwesome = FontAwesomeAsset::register($this);
 
 ````
 
-```
+```php
 //...
 'clientOptions' => [
     //...
