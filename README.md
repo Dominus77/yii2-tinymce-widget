@@ -15,7 +15,7 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require dominus77/yii2-tinymce-widget "~2.0.2"
+composer require dominus77/yii2-tinymce-widget
 ```
 
 or add
@@ -68,7 +68,7 @@ Once the extension is installed, simply use it in your code by  :
             '//www.tinymce.com/css/codepen.min.css',            
         ]
     ]
-]);?>
+]) ?>
 
 ```
 ## Plugin fontawesome
@@ -78,7 +78,7 @@ In this version of the widget, due to possible conflicts with the new version, t
 But the support of the plug-in itself remained. To turn it on, you need to install FontAwesome version 4.7
 
 ```
-php composer.phar require fortawesome/font-awesome "^4.7"
+composer require fortawesome/font-awesome "^4.7"
 ```
 or add
 
@@ -119,7 +119,7 @@ Install [mihaildev/yii2-elfinder](https://github.com/MihailDev/yii2-elfinder) ex
 Either run
 
 ```
-php composer.phar require --prefer-dist mihaildev/yii2-elfinder "~1.2"
+composer require --prefer-dist mihaildev/yii2-elfinder "~1.2"
 ```
 
 or add
@@ -168,7 +168,7 @@ Configure elFinder (more info [here](https://github.com/MihailDev/yii2-elfinder)
              'targetMinPixel' => 200         // Target image minimum pixel size
         ]
     ]
-],
+]
 ```
 
 Then select file manager provider in the widget:
