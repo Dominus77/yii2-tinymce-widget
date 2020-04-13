@@ -74,6 +74,83 @@ Once the extension is installed, simply use it in your code by  :
 ]) ?>
 
 ```
+## Plugin Typograf
+Helps to automatically fill in inextricable spaces, correct minor typos,
+bring quotation marks to the correct form, replace hyphens with dashes in the right places, and much more.
+```php
+<?= $form->field($model, 'text')->widget(\dominus77\tinymce\TinyMce::class, [
+    //...
+    'clientOptions' => [
+        // on plugin
+        'plugins' => [
+            'typograf',
+            //...
+        ],
+        // adding a button to a toolbar
+        'toolbar1' => 'typograf',
+        // adding a item to a context menu
+        'contextmenu' => 'typograf | link image inserttable | cell row column deletetable',
+        // advanced plugin settings        
+        'typograf' => [
+            'locale' => ['ru', 'en-US'],
+            // HTML entities
+            'htmlEntity' => [
+                //'type' => 'name',
+                //'onlyInvisible' => true
+            ],
+            // Enabling Rules
+            'enableRule' => [
+                //'ru/money/ruble',
+                //'ru/money/*',
+                //'ru/symbols/NN',
+                //'ru/optalign/*'
+            ],
+            // Disabling Rules
+            'disableRule' => [
+                //'ru/money/ruble',
+                //'ru/money/*',
+                //'ru/symbols/NN'
+            ],
+            // Change settings for rules
+            // Rule name, setting name, value
+            'setSetting' => [
+                // Continuous space before the last word in a sentence, not more than 5 characters
+                ['common/nbsp/beforeShortLastWord', 'lengthLastWord', 5],
+                // Nested quotes are also "Christmas trees" for Russian typography
+                ['common/punctuation/quote', 'ru', ['left' => '«', 'right' => '»', 'removeDuplicateQuotes' => true]],
+                // Non-breaking space after a short word, no more than 3 characters
+                ['common/nbsp/afterShortWord', 'lengthShortWord', 5]
+            ],
+            // Add a simple rule
+            // Typographic Smiley
+            'addRule' => [
+                [
+                    'name' => 'common/other/typographicSmiley',
+                    'handler' => new yii\web\JsExpression("
+                        function (text) {                                            
+                            return text.replace(/:-\)/g, ':—)');
+                        }
+                    ")
+                ]
+            ],
+            // Turn off typography in sections of text
+            'addSafeTag' => [
+                // Disable typography inside the <no-typography> tag
+                ['<no-typography>', '</no-typography>'],
+                // Disable typing inside control structures of some template engine.
+                ['\\{\\{', '\\}\\}'], // {{...}}
+                ['\\[\\[', '\\]\\]'], // [[...]]
+                // Disable typography inside PHP code
+                ['<\\?php', '\\?>']
+            ]
+        ],
+        //...
+    ]
+]) ?>
+```
+
+See more information on [JavaScript typographer](https://github.com/typograf/typograf)
+
 ## Plugin fontawesome
 
 The plugin is supported by FontAwesome version 4.7. 
