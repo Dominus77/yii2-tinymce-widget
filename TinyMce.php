@@ -5,6 +5,7 @@ namespace dominus77\tinymce;
 use Yii;
 use yii\helpers\Html;
 use yii\helpers\Json;
+use yii\web\AssetBundle;
 use yii\widgets\InputWidget;
 use yii\base\InvalidConfigException;
 use dominus77\tinymce\assets\TinyMceAsset;
@@ -38,7 +39,7 @@ class TinyMce extends InputWidget
     /**
      * @var int Set chmod for asset packages folder
      */
-    public $chmodAssetResourceMode = 0777;
+    public $chmodAssetResourceMode = false; //0777
 
     /**
      * @var bool|array FileManager configuration
@@ -71,22 +72,7 @@ class TinyMce extends InputWidget
     {
         $view = $this->getView();
         if ($tinyAssetBundle = TinyMceAsset::register($view)) {
-            $xCopy = new xCopy();
-            $assetPath = $tinyAssetBundle->basePath;
-            // Language pack
-            $languagesPack = Yii::getAlias('@dominus77/tinymce/assets/languages_pack');
-            $xCopy->copyFolder($languagesPack, $assetPath, true, true);
-            // Plugins
-            $pluginsPack = Yii::getAlias('@dominus77/tinymce/assets/plugins_pack');
-            $xCopy->copyFolder($pluginsPack, $assetPath, true, true);
-            // Skins
-            $skinsPack = Yii::getAlias('@dominus77/tinymce/assets/skins_pack');
-            $xCopy->copyFolder($skinsPack, $assetPath, true, true);
-
-            // Set chmod
-            if($this->chmodAssetResourceMode && is_int($this->chmodAssetResourceMode)) {
-                xCopy::chmodR($assetPath, $this->chmodAssetResourceMode);
-            }
+            $this->copyExtensions($tinyAssetBundle);
         }
         $id = $this->options['id'] ?: $this->getId();
         $this->clientOptions['selector'] = "#{$id}";
@@ -109,5 +95,28 @@ class TinyMce extends InputWidget
             $js[] = "$('#{$id}').parents('form').on('beforeValidate', function() { tinymce.triggerSave(); });";
         }
         $view->registerJs(implode("\n", $js));
+    }
+
+    /**
+     * @param AssetBundle $tinyAssetBundle
+     */
+    public function copyExtensions(AssetBundle $tinyAssetBundle)
+    {
+        $xCopy = new xCopy();
+        $assetPath = $tinyAssetBundle->basePath;
+        // Language pack
+        $languagesPack = Yii::getAlias('@dominus77/tinymce/assets/languages_pack');
+        $xCopy->copyFolder($languagesPack, $assetPath, true, true);
+        // Plugins
+        $pluginsPack = Yii::getAlias('@dominus77/tinymce/assets/plugins_pack');
+        $xCopy->copyFolder($pluginsPack, $assetPath, true, true);
+        // Skins
+        $skinsPack = Yii::getAlias('@dominus77/tinymce/assets/skins_pack');
+        $xCopy->copyFolder($skinsPack, $assetPath, true, true);
+
+        // Set chmod
+        if ($this->chmodAssetResourceMode && is_int($this->chmodAssetResourceMode)) {
+            xCopy::chmodR($assetPath, $this->chmodAssetResourceMode);
+        }
     }
 }
