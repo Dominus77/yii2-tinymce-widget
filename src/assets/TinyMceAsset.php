@@ -3,7 +3,6 @@
 namespace dominus77\tinymce\assets;
 
 use yii\web\AssetBundle;
-use const dominus77\tinymce\assets\YII_ENV_DEV;
 
 /**
  * Class TinyMceAsset
@@ -26,7 +25,7 @@ class TinyMceAsset extends AssetBundle
     public function init()
     {
         $this->sourcePath = self::$tinyPublishPath;
-        $min = !YII_ENV_DEV ? '.min' : '';
+        $min = YII_ENV_DEV ? '' : '.min';
         $this->js[] = 'tinymce' . $min . '.js';
     }
 }
