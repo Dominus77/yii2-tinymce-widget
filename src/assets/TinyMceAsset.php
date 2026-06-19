@@ -13,7 +13,7 @@ class TinyMceAsset extends AssetBundle
     /**
      * @var string
      */
-    public static $tinyPublishPath = '@vendor/tinymce/tinymce';
+    public static $tinyPublishPath = '@npm/tinymce';
     /**
      * @var string
      */
