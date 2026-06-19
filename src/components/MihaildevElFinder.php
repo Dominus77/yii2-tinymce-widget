@@ -1,7 +1,8 @@
 <?php
 
-namespace dominus77\tinymce\components;
+namespace dominus77\tinymce\src\components;
 
+use dominus77\tinymce\src\components\FileManager;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\helpers\Json;

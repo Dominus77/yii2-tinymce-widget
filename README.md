@@ -33,7 +33,7 @@ to the require section of your `composer.json` file.
 Once the extension is installed, simply use it in your code by  :
 
 ```php
-<?= $form->field($model, 'text')->widget(\dominus77\tinymce\TinyMce::class, [    
+<?= $form->field($model, 'text')->widget(\dominus77\tinymce\src\TinyMce::class, [    
     'options' => [
         'rows' => 6,
         'placeholder' => true,
@@ -77,8 +77,9 @@ Once the extension is installed, simply use it in your code by  :
 ## Plugin Typograf
 Helps to automatically fill in inextricable spaces, correct minor typos,
 bring quotation marks to the correct form, replace hyphens with dashes in the right places, and much more.
+
 ```php
-<?= $form->field($model, 'text')->widget(\dominus77\tinymce\TinyMce::class, [
+<?= $form->field($model, 'text')->widget(\dominus77\tinymce\src\TinyMce::class, [
     //...
     'clientOptions' => [
         // on plugin
@@ -168,7 +169,7 @@ or add
 The connection might look like this:
 
 ```php
-use dominus77\tinymce\assets\FontAwesomeAsset;
+use dominus77\tinymce\src\assets\FontAwesomeAsset;
 
 $fontAwesome = FontAwesomeAsset::register($this);
 
@@ -254,14 +255,14 @@ Configure elFinder (more info [here](https://github.com/MihailDev/yii2-elfinder)
 Then select file manager provider in the widget:
 
 ```php
-$form->field($model, 'text')->widget(\dominus77\tinymce\TinyMce::class, [    
+$form->field($model, 'text')->widget(\dominus77\tinymce\src\TinyMce::class, [    
     'clientOptions' => [
         //...
         /** @see https://www.tinymce.com/docs/configure/file-image-upload/#file_picker_types */
         //'file_picker_types' => 'file image media',        
     ],
     'fileManager' => [
-        'class' => \dominus77\tinymce\components\MihaildevElFinder::class,
+        'class' => \dominus77\tinymce\src\components\MihaildevElFinder::class,
     ],    
     //...
 ])
@@ -353,14 +354,14 @@ class Module extends \yii\base\Module
 in module view:
 
 ```php
-$form->field($model, 'text')->widget(\dominus77\tinymce\TinyMce::class, [    
+$form->field($model, 'text')->widget(\dominus77\tinymce\src\TinyMce::class, [    
     'clientOptions' => [
         //...
         /** @see https://www.tinymce.com/docs/configure/file-image-upload/#file_picker_types */
         //'file_picker_types' => 'file image media',
     ],
     'fileManager' => [
-        'class' => \dominus77\tinymce\components\MihaildevElFinder::class,
+        'class' => \dominus77\tinymce\src\components\MihaildevElFinder::class,
         'controller' => 'elfinder',        
         'title' => 'My File Manager',
         'width' => 900,

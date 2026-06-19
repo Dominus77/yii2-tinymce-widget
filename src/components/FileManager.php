@@ -1,6 +1,6 @@
 <?php
 
-namespace dominus77\tinymce\components;
+namespace dominus77\tinymce\src\components;
 
 use yii\base\BaseObject;
 

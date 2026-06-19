@@ -1,8 +1,9 @@
 <?php
 
-namespace dominus77\tinymce\assets;
+namespace dominus77\tinymce\src\assets;
 
 use yii\web\AssetBundle;
+use const dominus77\tinymce\assets\YII_ENV_DEV;
 
 /**
  * Class FontAwesomeAsset

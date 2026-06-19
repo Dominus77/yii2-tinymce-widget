@@ -1,6 +1,6 @@
 <?php
 
-namespace dominus77\tinymce\helpers;
+namespace dominus77\tinymce\src\helpers;
 
 use Yii;
 
