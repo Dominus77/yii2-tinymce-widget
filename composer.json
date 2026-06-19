@@ -13,7 +13,7 @@
     "require": {
         "ext-gd": "*",
         "yiisoft/yii2": "~2.0",
-        "tinymce/tinymce": "^4.0"
+        "tinymce/tinymce": "^7.9.3"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master"
@@ -27,6 +27,16 @@
     "autoload": {
         "psr-4": {
             "dominus77\\tinymce\\": ""
+        }
+    },
+    "config": {
+        "policy": {
+            "advisories": {
+                "block": false
+            }
+        },
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true
         }
     }
 }
