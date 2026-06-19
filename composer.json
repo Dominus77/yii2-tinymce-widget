@@ -28,15 +28,5 @@
         "psr-4": {
             "dominus77\\tinymce\\": "src"
         }
-    },
-    "config": {
-        "policy": {
-            "advisories": {
-                "block": false
-            }
-        },
-        "allow-plugins": {
-            "yiisoft/yii2-composer": true
-        }
     }
 }
