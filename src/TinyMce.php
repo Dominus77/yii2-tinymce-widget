@@ -1,6 +1,6 @@
 <?php
 
-namespace dominus77\tinymce\src;
+namespace dominus77\tinymce;
 
 use Yii;
 use yii\helpers\Html;
@@ -8,9 +8,9 @@ use yii\helpers\Json;
 use yii\web\AssetBundle;
 use yii\widgets\InputWidget;
 use yii\base\InvalidConfigException;
-use dominus77\tinymce\src\assets\TinyMceAsset;
-use dominus77\tinymce\src\components\FileManager;
-use dominus77\tinymce\src\helpers\xCopy;
+use dominus77\tinymce\assets\TinyMceAsset;
+use dominus77\tinymce\components\FileManager;
+use dominus77\tinymce\helpers\xCopy;
 
 /**
  * Class TinyMce

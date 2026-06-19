@@ -1,6 +1,6 @@
 <?php
 
-namespace dominus77\tinymce\src\components;
+namespace dominus77\tinymce\components;
 
 use dominus77\tinymce\src\components\FileManager;
 use Yii;
