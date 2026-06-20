@@ -7,6 +7,7 @@ use yii\web\AssetBundle;
 /**
  * Class TinyMceAsset
  * @package dominus77\tinymce
+ *
  */
 class TinyMceAsset extends AssetBundle
 {
