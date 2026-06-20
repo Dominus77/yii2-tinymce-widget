@@ -3,6 +3,7 @@
 
 # phpstorm project files
 .idea
+.github
 
 # netbeans project files
 nbproject

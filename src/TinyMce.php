@@ -45,7 +45,7 @@ class TinyMce extends InputWidget
      * @var bool|array FileManager configuration
      * For example:
      * 'fileManager' => [
-     *       'class' => 'FileManager',
+     *       'class' => 'FileManager'
      * ]
      */
     public $fileManager = false;
